@@ -1,6 +1,6 @@
 ## Menu
 - **Dashboard**
-- **Houses**
+- **Property**
 
    - List of all houses/parking which can contain:
 
@@ -17,6 +17,7 @@
       - Status (Vacant/Occupied)
 
       - Picture of house (can upload picture and save to cloud if possible)
+
       - Agent Name
 
    - Option to Add/Edit/Delete
@@ -41,11 +42,11 @@ using bootstrap is possible)
 
       - Agreement Document
 
-      - Agent Name/Owner Direct
+      - ~~Agent Name/Owner Direct~~
 
       - Status
 
-      - Exit Date
+      - ~~Exit Date~~
 
    - Clicking on the tenant would open up tenant details
 
@@ -126,6 +127,7 @@ using bootstrap is possible)
 - Each owner can only view their unit but there manager that can view all unit. So Role would be
 
    - Admin (system admin)
+
    - Manager (Manage the company-can view all)
 
    - Owner
@@ -135,3 +137,17 @@ using bootstrap is possible)
 - Can put company profile i.e. for the main page
 
 - Ability to put system on maintenance.
+
+## DB Relationships
+
+- Property belongsTo Tenant
+
+- Property belongsTo Owner
+
+- Property belongsTo Agent (nullable)
+
+- Tenant hasOne Property
+
+- Owner hasMany Properties
+
+- Agent hasMany Properties (nullable)
