@@ -7,6 +7,7 @@ use App\Models\Property;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
+
 class PropertyController extends Controller
 {
     /**
@@ -63,7 +64,7 @@ class PropertyController extends Controller
      */
     public function edit(Property $property)
     {
-        //
+        return view('property.edit', compact('property'));
     }
 
     /**
@@ -71,7 +72,26 @@ class PropertyController extends Controller
      */
     public function update(Request $request, Property $property)
     {
-        //
+        $validated = $request->validate([
+            'type' => 'required|string',
+            'address' => 'required|string',
+            'number' => 'required|string',
+            'features' => 'required|string',
+            'status' => 'required|string',
+            'rent' => 'required'
+        ]);
+
+        $property->update($validated);
+
+        if ($property instanceof Model) {
+            toastr()->success('Property updated successfully!');
+
+            return redirect()->route('property.index');
+        }
+        
+        toastr()->error('An error has occured. Please try again');
+
+        return back();
     }
 
     /**
@@ -80,9 +100,7 @@ class PropertyController extends Controller
     public function destroy(Property $property)
     {
         $property->delete();
-
         toastr()->success('Property deleted successfully!');
-
         return redirect()->route('property.index');
     }
 }
