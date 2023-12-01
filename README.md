@@ -52,6 +52,17 @@ using bootstrap is possible)
 
    - Option to Add/Edit/Delete(Only Admin)
 
+- **Rent**
+   
+   - Tenant ID
+
+   - Property ID
+
+   - IN DATE
+
+   - OUT DATE
+
+   - Deposit
 - **Owner**
    - Same details as Tenant
 
@@ -146,7 +157,7 @@ using bootstrap is possible)
 
 - Property belongsTo Agent (nullable)
 
-- Tenant hasOne Property
+- Tenant hasMany Properties
 
 - Owner hasMany Properties
 

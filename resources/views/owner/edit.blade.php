@@ -30,9 +30,9 @@
                         Owner
                     </span>
                     <select class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="owner">
-                        @foreach($owners as $owner)
-                            <option value="{{ $owner->id }}" {{ $property->owner_id == $owner->id ? 'selected' : ''}}>{{ $owner->name }}</option>
-                        @endforeach
+                        <option value="1">Owner 1</option>
+                        <option value="2">Owner 2</option>
+                        <option value="3">Owner 3</option>
                     </select>
                 </label>
                 <label class="block text-sm mt-4">

@@ -8,7 +8,7 @@
         <form method="POST" action="{{route('property.store')}}" class="mt-6">
             @csrf
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <div class="mt-4 text-sm">
+                <div class="mt-4 text-sm">
                     <span class="text-gray-700 dark:text-gray-400 font-medium">
                         Property Type
                     </span>
@@ -29,9 +29,10 @@
                         Owner
                     </span>
                     <select class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="owner">
-                        <option value="1">Owner 1</option>
-                        <option value="2">Owner 2</option>
-                        <option value="3">Owner 3</option>
+                        <option value="">Please select...</option>
+                        @foreach($owners as $owner)
+                        <option value="{{ $owner->id }}">{{ $owner->name }}</option>
+                        @endforeach
                     </select>
                 </label>
                 <label class="block text-sm mt-4">
@@ -53,7 +54,8 @@
                     <textarea class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" rows="3" name="features"></textarea>
                 </label>
 
-                <div class="mt-4 text-sm">
+                
+                    <div class="mt-4 text-sm">
                     <span class="text-gray-700 dark:text-gray-400 font-medium">
                         Status
                     </span>
@@ -67,12 +69,15 @@
                             <span class="ml-2">Occupied</span>
                         </label>
                     </div>
-                </div>
 
                 <label class="block mt-4 text-sm">
                     <span class="text-gray-700 dark:text-gray-400 font-medium">Upload Image</span>
                     <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="image" type="file">
                 </label>
+
+                    
+                    
+                </div>
                 <div class="flex justify-center my-6 text-sm ">
                     <x-dark-button class="w-1/2 md:w-1/3">Add New Property</x-dark-button>
                 </div>

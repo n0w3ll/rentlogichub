@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+            $table->integer('owner_id')->unsigned();
             $table->string('type');
             $table->text('address');
             $table->string('number');
@@ -20,7 +21,6 @@ return new class extends Migration
             $table->string('status');
             $table->integer('rent');
             $table->string('image')->nullable();
-            // $table->foreignId('owner_id')->nullable()->constrained()->onDelete('cascade');
             // $table->foreignId('agent_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });

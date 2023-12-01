@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use Illuminate\Support\Facades\Route;
@@ -30,5 +31,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('property', PropertyController::class )->middleware(['auth']);
+Route::resource('owner', OwnerController::class )->middleware(['auth']);
 
 require __DIR__.'/auth.php';

@@ -17,6 +17,7 @@ class PropertyFactory extends Factory
     public function definition(): array
     {
         return [
+            'owner_id' => $this->faker->numberBetween(1,20),
             'type' => $this->faker->randomElement(['house','parking']),
             'address' => $this->faker->address(),
             'number' => $this->faker->numberBetween(100,5000),

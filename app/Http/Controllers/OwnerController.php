@@ -4,23 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Owner;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class OwnerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $owners = Owner::latest()->paginate(10);
+        $properties = Owner::find(1)->properties;
+
+        return view('owner.index', compact('owners','properties'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('owner.create');        
     }
 
     /**

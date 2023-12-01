@@ -11,6 +11,7 @@ class Property extends Model
     use HasFactory;
 
     protected $fillable = [
+        'owner_id',
         'type',
         'address',
         'number',
@@ -20,8 +21,8 @@ class Property extends Model
         'image'
     ];
 
-    // public function owner(): BelongsTo
-    // {
-    //     return $this->belongsTo(Owner::class, 'owner_id');
-    // }
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(Owner::class);
+    }
 }
