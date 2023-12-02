@@ -13,10 +13,10 @@ class OwnerController extends Controller
      */
     public function index(): View
     {
-        $owners = Owner::latest()->paginate(10);
-        $properties = Owner::find(1)->properties;
-
-        return view('owner.index', compact('owners','properties'));
+        $owners = Owner::has('properties')->latest()->paginate(10);
+        
+        return view('owner.index', compact('owners'));
+        
     }
 
     /**
@@ -40,7 +40,9 @@ class OwnerController extends Controller
      */
     public function show(Owner $owner)
     {
-        //
+        return view('owner.view', [
+            'owner' => $owner,
+        ]);
     }
 
     /**

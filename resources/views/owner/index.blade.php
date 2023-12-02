@@ -44,13 +44,11 @@
                             <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                           </div>
                           <div>
-                            <p class="font-bold text-gray-600 dark:text-gray-400">
-                              {{ $owner->name }} [
-                              @foreach ($properties as $property)
-                              {{ $property->id }},
-                              @endforeach
-                              ]
-                            </p>
+                            <a href="{{ route('owner.show', $owner->id) }}">
+                              <p class="font-bold text-gray-600 dark:text-gray-400">
+                                {{ $owner->name }} 
+                              </p>
+                            </a>
                           </div>
                         </div>
                       </td>
