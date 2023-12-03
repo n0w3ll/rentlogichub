@@ -38,7 +38,7 @@ class OwnerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Owner $owner)
+    public function show(Owner $owner): View
     {
         return view('owner.view', [
             'owner' => $owner,
@@ -67,5 +67,12 @@ class OwnerController extends Controller
     public function destroy(Owner $owner)
     {
         //
+    }
+
+    public function showall()
+    {
+        $owners = Owner::latest()->paginate(10);
+        
+        return view('owner.index', compact('owners'));
     }
 }
