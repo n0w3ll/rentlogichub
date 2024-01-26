@@ -28,9 +28,17 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
               </svg>
               <h1 class="text-3xl  flex">
-                <span class="font-bold">RENT</span>
+                @php
+                  $appName = config('app.name');
+                  $words = explode(' ', $appName);
+                @endphp
+                <!-- <span class="font-bold">RENT</span>
                 <span class="font-thin">LOGIC</span>
-                <span class="font-semibold">HUB</span>
+                <span class="font-semibold">HUB</span> -->
+                <span class="font-bold uppercase">{{ $words[0] }}</span>
+                <span class="font-thin uppercase">{{ $words[1] }}</span>
+                <span class="font-semibold uppercase">{{ $words[2] }}</span>
+
               </h1>
               </div>
 
@@ -56,7 +64,6 @@
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
               </label>
 
-              <!-- You should use a button here, as the anchor is only used for the example  -->
               <x-dark-button>{{__('Log in')}}</x-dark-button>
 
               <hr class="my-8" />
