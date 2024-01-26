@@ -7,6 +7,7 @@ use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
 use App\Models\Owner;
 use App\Models\Property;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -16,11 +17,28 @@ class PropertyController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $properties = Property::latest()->paginate(10);
+        // $properties = Property::latest()->paginate(10);
+        $searched = $request->q;
 
-        return view('property.index', compact('properties'));
+        $properties = Property::leftJoin('owners', 'owners.id', '=', 'properties.owner_id')
+        ->when(
+            $request->q,
+            function (Builder $builder) use ($request) {
+                $builder
+                    ->where('type', 'like', "%{$request->q}%")
+                    ->orWhere('address', 'like', "%{$request->q}%")
+                    ->orWhere('number', 'like', "%{$request->q}%")
+                    ->orWhere('features', 'like', "%{$request->q}%")
+                    ->orWhere('owners.name', 'like', "%{$request->q}%");
+            }
+        )
+        ->select('properties.*')
+        ->orderBy('properties.created_at', 'desc')
+        ->paginate(10);
+
+        return view('property.index', compact('properties','searched'));
     }
 
     /**
@@ -57,7 +75,7 @@ class PropertyController extends Controller
     public function edit(Property $property)
     {
         $owners = Owner::all();
-        return view('property.edit', compact('property','owners'));
+        return view('property.edit', compact('property', 'owners'));
     }
 
     /**
