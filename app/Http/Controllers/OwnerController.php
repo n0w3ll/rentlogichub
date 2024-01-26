@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Owner;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -11,11 +12,26 @@ class OwnerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $owners = Owner::has('properties')->latest()->paginate(10);
+        // $owners = Owner::has('properties')->latest()->paginate(10);
+        $searched = $request->input('q');
+
+        $owners = Owner::withCount('properties')
+        ->when(
+            $request->q,
+            function (Builder $builder) use ($request) {
+                $builder
+                ->where('name', 'like', "%{$request->q}%")
+                ->orWhere('identity_no', 'like', "%{$request->q}%")
+                ->orWhere('phone', 'like', "%{$request->q}%")
+                ->orWhere('email', 'like', "%{$request->q}%");
+            }
+        )
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
         
-        return view('owner.index', compact('owners'));
+        return view('owner.index', compact('owners','searched'));
         
     }
 
@@ -69,10 +85,26 @@ class OwnerController extends Controller
         //
     }
 
-    public function showall()
+    public function showall(Request $request)
     {
-        $owners = Owner::latest()->paginate(10);
+        // $owners = Owner::latest()->paginate(10);
+
+        $searched = $request->input('q');
+
+        $owners = Owner::with('properties')
+        ->when(
+            $request->q,
+            function (Builder $builder) use ($request) {
+                $builder
+                ->where('name', 'like', "%{$request->q}%")
+                ->orWhere('identity_no', 'like', "%{$request->q}%")
+                ->orWhere('phone', 'like', "%{$request->q}%")
+                ->orWhere('email', 'like', "%{$request->q}%");
+            }
+        )
+        ->orderBy('created_at','desc')
+        ->paginate(10);
         
-        return view('owner.index', compact('owners'));
+        return view('owner.index', compact('owners','searched'));
     }
 }

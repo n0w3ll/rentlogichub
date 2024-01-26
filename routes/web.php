@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('property', PropertyController::class )->middleware(['auth']);
 
-Route::get('owner/all', [OwnerController::class, 'showall'])->name('owner.all');
+Route::get('owner/all', [OwnerController::class, 'showall'])->name('owner.all')->middleware(['auth']);
 Route::resource('owner', OwnerController::class )->middleware(['auth']);
 
 Route::resource('rent', RentController::class )->middleware(['auth']);

@@ -10,6 +10,9 @@ class Owner extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'registered_at' => 'date',
+    ];
     protected $fillable = [
         'name',
         'identity_no',
