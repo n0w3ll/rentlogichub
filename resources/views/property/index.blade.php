@@ -16,9 +16,16 @@
                 <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for property" value="{{ $searched }}" name="q" aria-label="Search">
               </form>
           </div>
-          <a class="text-right" href="{{ route('property.create') }}">
-              <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">+ New Property</button>
-          </a>
+          <div class="space-x-4">
+            @unless ($searched == "")
+              <a class="text-right" href="{{ route('property.index') }}">
+                  <button class="inline-flex items-center px-4 py-2 bg-purple-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">< ALL PROPERTIES</button>
+              </a>
+              @endunless
+            <a class="text-right" href="{{ route('property.create') }}">
+                <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">+ New Property</button>
+            </a>
+          </div>
         </div>
         <div class="mt-6 w-full overflow-hidden rounded-lg shadow-md">
               <div class="w-full overflow-x-auto">
@@ -63,8 +70,9 @@
                       <td class="px-4 py-3 text-xs">
                         @if ($property->status === 'vacant')
                         <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                          Vacant
+                          Vacant 
                         </span>
+                        <span class="ml-2 px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:bg-orange-700 dark:text-orange-100">RENT IT</span>
                         @else
                         <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
                           Occupied
