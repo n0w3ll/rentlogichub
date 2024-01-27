@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->integer('owner_id')->unsigned();
+            $table->unsignedBigInteger('owner_id');
+            $table->foreign('owner_id')->references('id')->on('owners');
             $table->string('type');
             $table->text('address');
             $table->string('number');

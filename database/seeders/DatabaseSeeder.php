@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Property::factory(20)->create();
         \App\Models\Owner::factory(20)->create();
+        \App\Models\Property::factory(20)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            RoleSeeder::class,
-            PermissionSeeder::class,
+            // RoleSeeder::class,
+            // PermissionSeeder::class,
             SuperadminSeeder::class
         ]);
     }

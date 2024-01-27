@@ -162,3 +162,14 @@ using bootstrap is possible)
 - Owner hasMany Properties
 
 - Agent hasMany Properties (nullable)
+
+## DB Seeders / Factories
+
+- Super Admin seeder :
+    Username : sadmin
+    Email : admin@sadmin.com
+    Password : qpAL1029#
+
+- OwnerFactory
+
+- PropertyFactory
