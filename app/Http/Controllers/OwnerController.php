@@ -30,6 +30,10 @@ class OwnerController extends Controller
         )
         ->orderBy('created_at', 'desc')
         ->paginate(10);
+
+        $title = 'Delete Owner?';
+        $text = "Deleting this owner will also delete ALL his/her properties";
+        confirmDelete($title, $text);
         
         return view('owner.index', compact('owners','searched'));
         
@@ -80,9 +84,16 @@ class OwnerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Owner $owner)
+    // public function destroy(Owner $owner)
+    // {
+    //     $owner->delete();
+    //     return redirect()->back()->with('success', 'Owner successfully deleted');
+    // }
+    public function destroy(string $id)
     {
-        //
+        Owner::find($id)->delete();
+  
+        return back();
     }
 
     public function showall(Request $request)

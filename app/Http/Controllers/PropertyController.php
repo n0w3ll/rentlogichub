@@ -39,6 +39,10 @@ class PropertyController extends Controller
         ->orderBy('properties.created_at', 'desc')
         ->paginate(10);
 
+        $title = 'Delete Property';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+
         return view('property.index', compact('properties','searched'));
     }
 
@@ -96,7 +100,6 @@ class PropertyController extends Controller
     public function destroy(Property $property)
     {
         $property->delete();
-        toastr()->success('Property deleted successfully!');
-        return redirect()->route('property.index');
+        return redirect()->route('property.index')->with('success', 'Property successfully deleted!');
     }
 }

@@ -15,11 +15,11 @@ class Controller extends BaseController
     {
         $this->middleware(function($request,$next){
             if (session('success')) {
-                Alert::success(session('success'));
+                Alert::toast(session('success'),'success')->position('top');
             }
 
             if (session('error')) {
-                Alert::error(session('error'));
+                Alert::toast(session('error'),'error')->position('top');
             }
 
             return $next($request);
