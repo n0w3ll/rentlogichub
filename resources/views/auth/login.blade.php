@@ -31,13 +31,17 @@
                 @php
                   $appName = config('app.name');
                   $words = explode(' ', $appName);
+                  
+                  $styles = ['font-bold', 'font-thin', 'font-semibold']; // Add more styles as needed
+
+                  foreach ($words as $index => $word) {
+                      $currentStyle = $styles[$index % count($styles)];
+                      echo '<span class="' . $currentStyle . ' uppercase">' . $word . '</span> ';
+                  }
                 @endphp
                 <!-- <span class="font-bold">RENT</span>
                 <span class="font-thin">LOGIC</span>
                 <span class="font-semibold">HUB</span> -->
-                <span class="font-bold uppercase">{{ $words[0] }}</span>
-                <span class="font-thin uppercase">{{ $words[1] }}</span>
-                <span class="font-semibold uppercase">{{ $words[2] }}</span>
 
               </h1>
               </div>

@@ -31,6 +31,7 @@ class PropertyController extends Controller
                     ->orWhere('address', 'like', "%{$request->q}%")
                     ->orWhere('number', 'like', "%{$request->q}%")
                     ->orWhere('features', 'like', "%{$request->q}%")
+                    ->orWhere('status', 'like', "%{$request->q}%")
                     ->orWhere('owners.name', 'like', "%{$request->q}%");
             }
         )
