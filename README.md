@@ -166,8 +166,11 @@ using bootstrap is possible)
 ## DB Seeders / Factories
 
 - Super Admin seeder :
+
     Username : sadmin
+
     Email : admin@sadmin.com
+    
     Password : qpAL1029#
 
 - OwnerFactory
