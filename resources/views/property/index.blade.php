@@ -85,8 +85,8 @@
               </td>
               <td class="px-4 py-3">
                 <div class="flex items-center space-x-4 text-sm">
-                  <a href="{{ route('property.edit', $property->id) }}" class="btn btn-xs btn-info btn-flat text-blue-500 rounded-lg dark:text-gray-400 fa-solid fa-pencil" aria-label="Edit"></a>
-                  <a href="{{ route('property.destroy', $property->id) }}" class="btn btn-xs btn-danger btn-flat text-red-400 dark:text-gray-400 fa-solid fa-trash-can" data-confirm-delete="true"></a>
+                  <a href="{{ route('property.edit', $property->id) }}" class="text-lg btn-info btn-flat text-blue-500 rounded-lg dark:text-gray-400 fa-solid fa-pencil" aria-label="Edit"></a>
+                  <a href="{{ route('property.destroy', $property->id) }}" class="text-lg btn-danger btn-flat text-red-400 dark:text-gray-400 fa-solid fa-trash-can" data-confirm-delete="true"></a>
                 </div>
               </td>
             </tr>

@@ -15,10 +15,15 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Total clients
+                        Total Properties : <span class="text-lg font-bold">{{ (intval($prop_vacant) + intval($prop_occupied)) > 0 ? ($prop_vacant + $prop_occupied) : 0 }}</span>
                     </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        6389
+                    <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                        Vacant : <span class="text-bold">{{ ($prop_vacant) > 0 ? ($prop_vacant) : 0 }}</span>
+                    </span>
+                    <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                        Occupied : <span class="text-bold">{{ ($prop_occupied) > 0 ? ($prop_occupied) : 0 }}</span>
+                    </span>
                     </p>
                 </div>
             </div>
