@@ -51,7 +51,7 @@ class PropertyController extends Controller
      */
     public function create(): View
     {
-        $owners = Owner::all();
+        $owner = Owner::all();
         return view('property.create', compact('owners'));
     }
 
@@ -62,8 +62,7 @@ class PropertyController extends Controller
     {
         Property::create($request->all());
 
-        toastr()->success('Property added successfully!');
-        return redirect()->route('property.index');
+        return redirect()->route('property.index')->with('success','Property added successfully!');
     }
 
     /**
@@ -80,6 +79,7 @@ class PropertyController extends Controller
     public function edit(Property $property)
     {
         $owners = Owner::all();
+
         return view('property.edit', compact('property', 'owners'));
     }
 
@@ -90,8 +90,7 @@ class PropertyController extends Controller
     {
         $property->update($request->all());
 
-        toastr()->success('Property updated successfully!');
-        return redirect()->route('property.index');
+        return redirect()->route('property.index')->with('success','Property updated successfully!');
     }
 
     /**

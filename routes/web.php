@@ -5,6 +5,7 @@ use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RentController;
+use App\Http\Controllers\TenantController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,6 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('property', PropertyController::class )->middleware(['auth']);
+Route::resource('tenant', TenantController::class )->middleware(['auth']);
 
 Route::get('owner/all', [OwnerController::class, 'showall'])->name('owner.all')->middleware(['auth']);
 Route::resource('owner', OwnerController::class )->middleware(['auth']);
