@@ -23,7 +23,7 @@ class TenantFactory extends Factory
             'email' => $this->faker->email(),
             'registered_at' => $this->faker->date(),
             'agreement' => $this->faker->paragraph(2),
-            'status' => $this->faker->randomElement(['free','renting']),
+            'status' => $this->faker->randomElement(['free']),
         ];
     }
 }

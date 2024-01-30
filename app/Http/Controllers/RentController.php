@@ -30,7 +30,7 @@ class RentController extends Controller
         // }])->get();
         
         $properties = Property::where('status','vacant')->get();
-        $tenants = Tenant::where('status','free')->get();
+        $tenants = Tenant::orderBy('name', 'asc')->get();
 
         return view('rent.create', compact('properties','tenants'));
     }

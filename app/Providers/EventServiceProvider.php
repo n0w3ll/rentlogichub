@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\RentCreated;
 use App\Listeners\UpdatePropertyStatus;
+use App\Listeners\UpdateTenantStatus;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,6 +23,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         RentCreated::class => [
             UpdatePropertyStatus::class,
+            UpdateTenantStatus::class,
         ],
     ];
 

@@ -30,6 +30,7 @@
               <th class="px-4 py-3">Start Rent</th>
               <th class="px-4 py-3">End Rent</th>
               <th class="px-4 py-3">Deposit</th>
+              <th class="px-4 py-3">Actions</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
