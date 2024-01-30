@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RentCreated;
 use App\Http\Requests\StoreRentRequest;
 use App\Models\Rent;
 use App\Models\Property;
@@ -39,7 +40,9 @@ class RentController extends Controller
      */
     public function store(StoreRentRequest $request)
     {
-        Rent::create($request->all());
+        $newRent = Rent::create($request->all());
+
+        event(new RentCreated($newRent));
 
         return redirect()->route('rent.index')->with('success','Rent registered successfully!');
     }

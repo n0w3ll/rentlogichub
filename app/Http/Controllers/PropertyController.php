@@ -51,7 +51,7 @@ class PropertyController extends Controller
      */
     public function create(): View
     {
-        $owner = Owner::all();
+        $owners = Owner::all();
         return view('property.create', compact('owners'));
     }
 
