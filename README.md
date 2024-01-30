@@ -38,15 +38,10 @@ using bootstrap is possible)
 
       - Registration Date
 
-      - House/Parking
-
       - Agreement Document
 
-      - ~~Agent Name/Owner Direct~~
+      - Status (Renting/Free)
 
-      - Status
-
-      - ~~Exit Date~~
 
    - Clicking on the tenant would open up tenant details
 
@@ -63,6 +58,7 @@ using bootstrap is possible)
    - OUT DATE
 
    - Deposit
+
 - **Owner**
    - Same details as Tenant
 
@@ -77,8 +73,6 @@ using bootstrap is possible)
       - Phone Number
 
       - Email
-
-      - House/Parking
 
 - **Vendors**
    - List of all vendors
@@ -157,7 +151,9 @@ using bootstrap is possible)
 
 - Property belongsTo Agent (nullable)
 
-- Tenant hasMany Properties
+- Rent belongsTo Tenant
+
+- Tenant hasMany Rents
 
 - Owner hasMany Properties
 
@@ -176,3 +172,5 @@ using bootstrap is possible)
 - OwnerFactory
 
 - PropertyFactory
+
+- TenantFactory

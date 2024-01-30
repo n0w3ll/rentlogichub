@@ -70,7 +70,7 @@ class OwnerController extends Controller
      */
     public function edit(Owner $owner)
     {
-        //
+        return view('owner.edit', compact('owner'));
     }
 
     /**

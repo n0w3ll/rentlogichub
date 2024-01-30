@@ -29,6 +29,12 @@
         </a>
       </div>
     </div>
+    <div class="mt-4 ml-3 flex text-sm text-gray-400 gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+        </svg> 
+        <span class="ml-3">Currently Renting</span>
+    </div>
     <div class="mt-6 w-full overflow-hidden rounded-lg shadow-md">
       <div class="w-full overflow-x-auto">
         <table class="w-full whitespace-no-wrap">
@@ -47,13 +53,13 @@
             <tr class="text-gray-700 dark:text-gray-400">
               <td class="px-4 py-3">
                 <div class="flex items-center text-sm">
-                  <!-- Avatar with inset shadow -->
+                  
                   <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                    </svg>
-
-                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                    @if ($tenant->rents_count > 0)
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+                      </svg>
+                    @endif
                   </div>
                   <div>
                     <p class="font-bold text-gray-600 dark:text-gray-400">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTenantRequest;
 use App\Models\Tenant;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class TenantController extends Controller
@@ -14,7 +15,19 @@ class TenantController extends Controller
     public function index(Request $request)
     {   
         $searched = $request->q;
-        $tenants = Tenant::latest()->paginate(10);
+        $tenants = Tenant::withCount('rents')
+        ->when(
+            $request->q,
+            function (Builder $builder) use ($request) {
+                $builder
+                ->where('name', 'like', "%{$request->q}%")
+                ->orWhere('identity_no', 'like', "%{$request->q}%")
+                ->orWhere('phone', 'like', "%{$request->q}%")
+                ->orWhere('email', 'like', "%{$request->q}%");
+            }
+        )
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
 
         $title = 'Delete Tenant';
         $text = "Are you sure you want to delete?";

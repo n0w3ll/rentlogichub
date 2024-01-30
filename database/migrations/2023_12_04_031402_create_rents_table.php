@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        /*
         Schema::create('rents', function (Blueprint $table) {
             $table->id();
-            $table->integer('tenant_id')->unsigned();
-            $table->integer('property_id')->unsigned();
-            $table->date('rent_start');
-            $table->date('rent_end');
+            $table->unsignedBigInteger('tenant_id');
+            $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
+            $table->unsignedBigInteger('property_id');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
+            $table->dateTime('rent_start');
+            $table->dateTime('rent_end');
             $table->integer('deposit')->unsigned();
             $table->timestamps();
         });
-        */
     }
 
     /**
