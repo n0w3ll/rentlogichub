@@ -49,17 +49,12 @@
                 <div class="flex items-center text-sm">
                   <!-- Avatar with inset shadow -->
                   <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                    </svg>
-
-                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                    <span class="px-2 py-1 font-semibold leading-tight {{ ($owner->properties_count > 0) ? 'text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100' : 'text-red-600 bg-red-100 dark:bg-red-600 dark:text-red-100'}} rounded-full mr-2">
+                      {{ $owner->properties_count }}
+                    </span>
                   </div>
                   <div>
                     <p class="font-bold text-gray-600 dark:text-gray-400">
-                      <span class="px-2 py-1 font-semibold leading-tight {{ ($owner->properties_count > 0) ? 'text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100' : 'text-red-600 bg-red-100 dark:bg-red-600 dark:text-red-100'}} rounded-full mr-2">
-                        {{ $owner->properties_count }}
-                      </span>
                       <a href="{{ route('owner.show', $owner->id) }}">
                         {{ $owner->name }}
                       </a>

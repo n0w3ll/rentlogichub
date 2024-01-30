@@ -22,7 +22,7 @@ class PropertyFactory extends Factory
             'address' => $this->faker->address(),
             'number' => $this->faker->numberBetween(100,5000),
             'features' => $this->faker->sentence(6),
-            'status' => $this->faker->randomElement(['vacant','occupied']),
+            'status' => $this->faker->randomElement(['vacant']),
             'rent' => $this->faker->numberBetween(800, 3000)
         ];
     }
