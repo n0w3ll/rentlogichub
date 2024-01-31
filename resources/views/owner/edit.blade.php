@@ -46,7 +46,7 @@
                 
 
                 <div class="flex justify-center my-6 text-sm ">
-                    <x-dark-button class="w-1/2 md:w-1/3">Edit Owner</x-dark-button>
+                    <x-dark-button class="w-1/2 md:w-1/3">Update Owner</x-dark-button>
                 </div>
             </div>
         </form>

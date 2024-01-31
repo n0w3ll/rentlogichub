@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('address');
             $table->string('number');
             $table->text('features');
-            $table->string('status');
+            $table->string('status')->default('vacant');
             $table->integer('rent');
             $table->string('image')->nullable();
             // $table->foreignId('agent_id')->nullable()->constrained()->onDelete('cascade');
