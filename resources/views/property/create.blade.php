@@ -54,18 +54,7 @@
                     <textarea class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-textarea focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" rows="3" name="features"></textarea>
                 </label>
                 <div class="mt-2 hidden">
-                    <span class="text-gray-700 dark:text-gray-400 font-medium">
-                        Status
-                    </span>
-                    <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
-                        <input type="radio" class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="status" value="vacant" checked disabled>
-                        <span class="ml-2">Vacant</span>
-                    </label>
-
-                    <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                        <input type="radio" class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="status" value="occupied" disabled>
-                        <span class="ml-2">Occupied</span>
-                    </label>
+                    <input type="hidden" name="status" value="vacant">
                 </div>
                 <div class="mt-4 text-sm">
                     <label class="block mt-4 text-sm">
