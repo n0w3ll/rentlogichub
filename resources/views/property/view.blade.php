@@ -16,33 +16,37 @@
             </div>
         </div>
         <div class="mt-6 w-full">
-            <div class="w-full overflow-x-auto">
-
-                <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-
-
-                    <div class="flex flex-col items-center bg-white rounded-lg shadow-xs dark:bg-gray-800 border border-1 overflow-hidden">
-                        <div class="mt-3">
-                            @if ($property->status === 'vacant')
-                            <x-badge.vacant />
-                            <a href="{{ url('/rent/create?propid='.$property->id) }}">
-                                <x-badge.rentit />
-                            </a>
-                            @else
-                            <x-badge.occupied />
-                            @endif
-                        </div>
-                        <span>Current Tenant: {{ optional($currentTenant)->name }}</span>
-                        <ul>
-                            Previous Tenants:
-                            @foreach ($previousTenants as $previousTenant)
-                            <li>{{ $previousTenant->name }}</li>
-                            @endforeach
-                        </ul>
-                        <p class="p-4">{{ $property->address }}</p>
+            <div class="w-1/2 overflow-x-auto">
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-xs dark:bg-gray-800 border border-1 overflow-hidden">
+                    <div class="mt-3">
+                        @if ($property->status === 'vacant')
+                        <x-badge.vacant />
+                        <a href="{{ url('/rent/create?propid='.$property->id) }}">
+                            <x-badge.rentit />
+                        </a>
+                        @else
+                        <x-badge.occupied />
+                        @endif
                     </div>
-
-
+                    <div class="w-full p-4 flex flex-col text-left">
+                        <div class="font-semibold dark:text-gray-300 ">Current Tenant:</div>
+                        @if (!$currentTenant)
+                        <div class="ml-5 text-gray-400">- None -</div>
+                        @else
+                        <div class="ml-5">{{ optional($currentTenant)->name }}</div>
+                        @endif
+                        <ul class="mt-2">
+                            <div class="dark:text-gray-300 font-semibold">Previous Tenants:</div>
+                            @if($previousTenants->isEmpty())
+                            <div class="ml-5 text-gray-400">- None -</div>
+                            @else
+                                @foreach ($previousTenants as $previousTenant)
+                                    <li class="ml-5">{{ $previousTenant->name }}</li>
+                                @endforeach
+                            @endif
+                        </ul>
+                    </div>
+                    <p class="p-4 dark:text-gray-300 ">{{ $property->address }}</p>
                 </div>
             </div>
         </div>

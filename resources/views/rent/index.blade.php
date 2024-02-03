@@ -12,9 +12,17 @@
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
           </svg>
         </div>
-        <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for rent details" aria-label="Search">
+        <form action="{{ route('rent.index') }}" method="GET">
+          <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for rent details" value="{{ $searched }}" name="q" aria-label="Search">
+      </form>
       </div>
       <div class="space-x-4">
+        @unless ($searched == "")
+        <a class="text-right" href="{{ route('rent.index') }}">
+          <button class="inline-flex items-center px-4 py-2 bg-purple-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+            < ALL RENTS</button>
+        </a>
+        @endunless
         <a class="text-right" href="{{ route('rent.create') }}">
           <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">+ New Rent</button>
         </a>
@@ -40,14 +48,14 @@
                 <div class="flex items-center text-sm">
 
                   <div>
-                    <p class="font-semibold uppercase">{{ $rent->property->type }} <small class="text-xxs text-gray-500">(No. {{ $rent->property->number }})</small></p>
+                    <p class="font-semibold uppercase">{{ $rent->property_type }} <small class="text-xxs text-gray-500">(No. {{ $rent->property_number }})</small></p>
                   </div>
                 </div>
               </td>
               <td class="px-4 py-3">
                 <div class="flex items-center text-sm">
                   <div>
-                    <p class="font-semibold">{{ $rent->tenant->name }}</p>
+                    <p class="font-semibold">{{ $rent->tenant_name }}</p>
                   </div>
                 </div>
               </td>

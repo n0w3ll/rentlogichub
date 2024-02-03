@@ -7,17 +7,44 @@ use App\Http\Requests\StoreRentRequest;
 use App\Models\Rent;
 use App\Models\Property;
 use App\Models\Tenant;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class RentController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $rents = Rent::with(['tenant','property'])->paginate(10);
-        
-        return view('rent.index', compact('rents'));
-        
+        // $rents = Rent::with(['tenant','property'])->paginate(10);
+
+        // return view('rent.index', compact('rents'));
+        $searched = $request->q;
+
+        $rents = Rent::leftJoin('properties', 'properties.id', '=', 'rents.property_id')
+            ->leftJoin('tenants', 'tenants.id', '=', 'rents.tenant_id')
+            ->when(
+                $request->q,
+                function (Builder $builder) use ($request) {
+                    $builder
+                        ->where('properties.type', 'like', "%{$request->q}%")
+                        ->orWhere('properties.number', 'like', "%{$request->q}%")
+                        ->orWhere('tenants.name', 'like', "%{$request->q}%");
+                }
+            )
+            ->orderBy('rents.created_at', 'desc')
+            ->select(
+                'rents.*',
+                'properties.type as property_type',
+                'properties.number as property_number',
+                'tenants.name as tenant_name'
+            )
+            ->paginate(10);
+
+        $title = 'Delete Rent';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+
+        return view('rent.index', compact('rents', 'searched'));
     }
 
     /**
@@ -28,11 +55,11 @@ class RentController extends Controller
         // $rents = Rent::with(['tenant','property' => function ($query) {
         //     $query->where('status', 'vacant');
         // }])->get();
-        
-        $properties = Property::where('status','vacant')->get();
+
+        $properties = Property::where('status', 'vacant')->get();
         $tenants = Tenant::orderBy('name', 'asc')->get();
 
-        return view('rent.create', compact('properties','tenants'));
+        return view('rent.create', compact('properties', 'tenants'));
     }
 
     /**
@@ -44,7 +71,7 @@ class RentController extends Controller
 
         event(new RentCreated($newRent));
 
-        return redirect()->route('rent.index')->with('success','Rent registered successfully!');
+        return redirect()->route('rent.index')->with('success', 'Rent registered successfully!');
     }
 
     /**
@@ -52,7 +79,6 @@ class RentController extends Controller
      */
     public function show(Rent $rent)
     {
-        
     }
 
     /**
@@ -80,7 +106,7 @@ class RentController extends Controller
      */
     public function destroy(Rent $rent)
     {
-        //
+        $rent->delete();
+        return redirect()->route('rent.index')->with('success', 'Rent successfully deleted!');
     }
-    
 }

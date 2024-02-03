@@ -14,7 +14,7 @@
                         Property
                     </span>
                     <input type="hidden" name="property_id" value="{{ $rent->property_id }}">
-                    <h1>{{ $rent->property->type }} (No.{{ $rent->property->number}})</h1>
+                    <h1 class="text-md uppercase font-semibold dark:text-gray-300">{{ $rent->property->type }} <small class="text-xs">(No.{{ $rent->property->number}})</small></h1>
                     
                 </label>
                 <label class="block mt-4 text-sm">
@@ -22,7 +22,7 @@
                         Tenant
                     </span>
                     <input type="hidden" name="tenant_id" value="{{ $rent->tenant_id }}">
-                    <h1>{{ $rent->tenant->name }}</h1>
+                    <h1 class="text-md font-semibold dark:text-gray-300">{{ $rent->tenant->name }}</h1>
                     
                 </label>
                 <div class="block md:flex md:space-x-4">
