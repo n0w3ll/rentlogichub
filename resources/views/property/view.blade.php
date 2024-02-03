@@ -33,19 +33,26 @@
                         @if (!$currentTenant)
                         <div class="ml-5 text-gray-400">- None -</div>
                         @else
-                        <div class="ml-5">{{ optional($currentTenant)->name }}</div>
+                        <div class="ml-5 flex justify-between">
+                            <span class="dark:text-gray-400">{{ optional($currentTenant)->name }}</span>
+                            <small class="text-xs text-gray-700 dark:text-gray-400">{{ \Carbon\Carbon::parse($rentStartForCurrentTenant)->format('d/m/Y') }} ~ {{ \Carbon\Carbon::parse($rentEndForCurrentTenant)->format('d/m/Y') }}</small>
+                        </div>
                         @endif
                         <ul class="mt-2">
                             <div class="dark:text-gray-300 font-semibold">Previous Tenants:</div>
                             @if($previousTenants->isEmpty())
                             <div class="ml-5 text-gray-400">- None -</div>
                             @else
-                                @foreach ($previousTenants as $previousTenant)
-                                    <li class="ml-5">{{ $previousTenant->name }}</li>
+                                @foreach ($previousTenants as $index => $previousTenant)
+                                    <li class="ml-5 flex justify-between">
+                                        <span class="dark:text-gray-400">{{ $previousTenant->name }}</span>
+                                        <small class="text-xs text-gray-700 dark:text-gray-400">{{ \Carbon\Carbon::parse($rentStartForPreviousTenants[$index])->format('d/m/Y') }} ~ {{ \Carbon\Carbon::parse($rentEndForPreviousTenants[$index])->format('d/m/Y') }}</small>
+                                    </li>
                                 @endforeach
                             @endif
                         </ul>
                     </div>
+                    <div class="mx-auto w-3/4 border-t border-gray-500"></div>
                     <p class="p-4 dark:text-gray-300 ">{{ $property->address }}</p>
                 </div>
             </div>
