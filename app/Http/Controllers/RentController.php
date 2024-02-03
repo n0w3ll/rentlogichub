@@ -60,15 +60,19 @@ class RentController extends Controller
      */
     public function edit(Rent $rent)
     {
-        //
+        // $properties = Property::where('status','vacant')->get();
+
+        return view('rent.edit', compact('rent'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Rent $rent)
+    public function update(StoreRentRequest $request, Rent $rent)
     {
-        //
+        $rent->update($request->all());
+
+        return redirect()->route('rent.index')->with('success', 'Rent updated successfully!');
     }
 
     /**

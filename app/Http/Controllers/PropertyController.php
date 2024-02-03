@@ -23,27 +23,27 @@ class PropertyController extends Controller
         $searched = $request->q;
 
         $properties = Property::leftJoin('owners', 'owners.id', '=', 'properties.owner_id')
-        ->when(
-            $request->q,
-            function (Builder $builder) use ($request) {
-                $builder
-                    ->where('type', 'like', "%{$request->q}%")
-                    ->orWhere('address', 'like', "%{$request->q}%")
-                    ->orWhere('number', 'like', "%{$request->q}%")
-                    ->orWhere('features', 'like', "%{$request->q}%")
-                    ->orWhere('properties.status', 'like', "%{$request->q}%")
-                    ->orWhere('owners.name', 'like', "%{$request->q}%");
-            }
-        )
-        ->select('properties.*')
-        ->orderBy('properties.created_at', 'desc')
-        ->paginate(10);
+            ->when(
+                $request->q,
+                function (Builder $builder) use ($request) {
+                    $builder
+                        ->where('type', 'like', "%{$request->q}%")
+                        ->orWhere('address', 'like', "%{$request->q}%")
+                        ->orWhere('number', 'like', "%{$request->q}%")
+                        ->orWhere('features', 'like', "%{$request->q}%")
+                        ->orWhere('properties.status', 'like', "%{$request->q}%")
+                        ->orWhere('owners.name', 'like', "%{$request->q}%");
+                }
+            )
+            ->select('properties.*')
+            ->orderBy('properties.created_at', 'desc')
+            ->paginate(10);
 
         $title = 'Delete Property';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        return view('property.index', compact('properties','searched'));
+        return view('property.index', compact('properties', 'searched'));
     }
 
     /**
@@ -62,7 +62,7 @@ class PropertyController extends Controller
     {
         Property::create($request->all());
 
-        return redirect()->route('property.index')->with('success','Property added successfully!');
+        return redirect()->route('property.index')->with('success', 'Property added successfully!');
     }
 
     /**
@@ -70,7 +70,15 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        //
+        $currentTenant = $property->tenants->first(function ($tenant) {
+            return $tenant->pivot->rent_start <= now() && $tenant->pivot->rent_end >= now();
+        });
+        
+        $previousTenants = $property->tenants->filter(function ($tenant) {
+            return $tenant->pivot->rent_end < now();
+        });
+        
+        return view('property.view', compact('property', 'currentTenant', 'previousTenants'));
     }
 
     /**
@@ -90,7 +98,7 @@ class PropertyController extends Controller
     {
         $property->update($request->all());
 
-        return redirect()->route('property.index')->with('success','Property updated successfully!');
+        return redirect()->route('property.index')->with('success', 'Property updated successfully!');
     }
 
     /**

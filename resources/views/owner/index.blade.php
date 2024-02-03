@@ -49,15 +49,15 @@
                 <div class="flex items-center text-sm">
                   <!-- Avatar with inset shadow -->
                   <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                    <span class="px-2 py-1 font-semibold leading-tight {{ ($owner->properties_count > 0) ? 'text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100' : 'text-red-600 bg-red-100 dark:bg-red-600 dark:text-red-100'}} rounded-full mr-2">
-                      {{ $owner->properties_count }}
-                    </span>
+                    <a href="{{ route('owner.show', $owner->id) }}">
+                      <span class="px-2 py-1 font-semibold leading-tight {{ ($owner->properties_count > 0) ? 'text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-100' : 'text-red-600 bg-red-100 dark:bg-red-600 dark:text-red-100'}} rounded-full mr-2">
+                        {{ $owner->properties_count }}
+                      </span>
+                    </a>
                   </div>
                   <div>
                     <p class="font-bold text-gray-600 dark:text-gray-400">
-                      <a href="{{ route('owner.show', $owner->id) }}">
-                        {{ $owner->name }}
-                      </a>
+                      {{ $owner->name }}
                     </p>
                   </div>
                 </div>
