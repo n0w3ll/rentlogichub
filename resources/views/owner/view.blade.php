@@ -15,18 +15,18 @@
                 </a>
             </div>
         </div>
-        <div class="mt-6 w-full overflow-hidden rounded-lg shadow-md">
+        <div class="mt-6 w-full">
             <div class="w-full overflow-x-auto">
                 @if ($owner->properties->count() > 0)
                 <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                     @foreach ($owner->properties as $property)
 
-                    <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                        <span class="font-bold uppercase">{{ $property->type }}<small class="text-gray-400"> (No.{{ $property->number }})</small></span>
-                        <p>{{ $property->address }}</p>
-                        @endforeach
+                    <div class="flex flex-col items-center bg-white rounded-lg shadow-xs dark:bg-gray-800 border border-1 overflow-hidden">
+                        <span class="font-bold uppercase w-full bg-blue-500 text-center">{{ $property->type }}<small class="text-white"> (No.{{ $property->number }})</small></span>
+                        <p class="p-4">{{ $property->address }}</p>
                     </div>
-                    @else
+                    @endforeach
+                @else
                     <h3>No properties available</h3>
                     @endif
                 </div>

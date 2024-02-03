@@ -60,9 +60,7 @@ class OwnerController extends Controller
      */
     public function show(Owner $owner): View
     {
-        return view('owner.view', [
-            'owner' => $owner,
-        ]);
+        return view('owner.view', compact('owner'));
     }
 
     /**
@@ -84,22 +82,14 @@ class OwnerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    // public function destroy(Owner $owner)
-    // {
-    //     $owner->delete();
-    //     return redirect()->back()->with('success', 'Owner successfully deleted');
-    // }
-    public function destroy(string $id)
+    public function destroy(Owner $owner)
     {
-        Owner::find($id)->delete();
-  
-        return back();
+        $owner->delete();
+        return redirect()->back()->with('success', 'Owner successfully deleted');
     }
 
     public function showall(Request $request)
     {
-        // $owners = Owner::latest()->paginate(10);
-
         $searched = $request->input('q');
 
         $owners = Owner::with('properties')

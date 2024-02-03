@@ -70,16 +70,12 @@
               </td>
               <td class="px-4 py-3 text-xs">
                 @if ($property->status === 'vacant')
-                <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                  Vacant
-                </span>
+                <x-badge.vacant />
                 <a href="{{ url('/rent/create?propid='.$property->id) }}">
-                  <span class="ml-2 px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:bg-orange-500 dark:text-orange-100">RENT IT</span>
+                  <x-badge.rentit />
                 </a>
                 @else
-                <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
-                  Occupied
-                </span>
+                <x-badge.occupied />
                 @endif
               </td>
               <td class="px-4 py-3 text-sm">
