@@ -174,3 +174,16 @@ using bootstrap is possible)
 - PropertyFactory
 
 - TenantFactory
+
+## Events & Listeners
+
+- Event : **RentCreated** 
+   - update property status to 'occupied' (Listener : UpdatePropertyStatus)
+   - update tenant status to 'renting' (Listener : UpdateTenantStatus)
+
+## Scheduled Task
+
+- Daily task check 'rents' table 'rent_end' value for any 'rent_end' < now() :
+   - update corresponding property status to 'vacant' 
+   - update corresponding tenant status to 'free'
+   - Command : **update:property-status**
