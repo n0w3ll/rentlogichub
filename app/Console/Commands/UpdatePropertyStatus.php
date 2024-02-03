@@ -30,6 +30,7 @@ class UpdatePropertyStatus extends Command
 
         // Query the rents table for entries with rent_end in the past
         $expiredRents = Rent::where('rent_end', '<', $today)->get();
+        $ongoingRents = Rent::where('rent_end', '>=', $today)->get();
 
         // Loop through expired rents and update the corresponding properties
         foreach ($expiredRents as $expiredRent) {
@@ -44,6 +45,21 @@ class UpdatePropertyStatus extends Command
             if ($tenant->status == 'renting') {
                 // Update tenant status to free
                 $tenant->update(['status' => 'free']);
+            }
+        }
+
+        foreach ($ongoingRents as $ongoingRent) {
+            $property = $ongoingRent->property;
+            $tenant = $ongoingRent->tenant;
+
+            // Check if the property is vacant
+            if ($property->status == 'vacant') {
+                // Update property status to occupied
+                $property->update(['status' => 'occupied']);
+            }
+            if ($tenant->status == 'free') {
+                // Update tenant status to renting
+                $tenant->update(['status' => 'renting']);
             }
         }
 

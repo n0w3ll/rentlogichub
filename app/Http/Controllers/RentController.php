@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\RentCreated;
+use App\Events\RunUpdatePropertyStatusCommand;
 use App\Http\Requests\StoreRentRequest;
 use App\Models\Rent;
 use App\Models\Property;
@@ -31,7 +32,7 @@ class RentController extends Controller
                         ->orWhere('tenants.name', 'like', "%{$request->q}%");
                 }
             )
-            ->orderBy('rents.created_at', 'desc')
+            ->orderBy('rents.updated_at', 'desc')
             ->select(
                 'rents.*',
                 'properties.type as property_type',
@@ -70,7 +71,7 @@ class RentController extends Controller
         $newRent = Rent::create($request->all());
 
         event(new RentCreated($newRent));
-
+        event(new RunUpdatePropertyStatusCommand('update:property-status'));
         return redirect()->route('rent.index')->with('success', 'Rent registered successfully!');
     }
 
@@ -98,6 +99,7 @@ class RentController extends Controller
     {
         $rent->update($request->all());
 
+        event(new RunUpdatePropertyStatusCommand('update:property-status'));
         return redirect()->route('rent.index')->with('success', 'Rent updated successfully!');
     }
 
@@ -107,6 +109,7 @@ class RentController extends Controller
     public function destroy(Rent $rent)
     {
         $rent->delete();
+        event(new RunUpdatePropertyStatusCommand('update:property-status'));
         return redirect()->route('rent.index')->with('success', 'Rent successfully deleted!');
     }
 }

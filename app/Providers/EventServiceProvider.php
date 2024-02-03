@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Events\RentCreated;
+use App\Events\RunUpdatePropertyStatusCommand;
+use App\Listeners\RunUpdatePropertyStatusCommandListener;
 use App\Listeners\UpdatePropertyStatus;
 use App\Listeners\UpdateTenantStatus;
 use Illuminate\Auth\Events\Registered;
@@ -24,6 +26,9 @@ class EventServiceProvider extends ServiceProvider
         RentCreated::class => [
             UpdatePropertyStatus::class,
             UpdateTenantStatus::class,
+        ],
+        RunUpdatePropertyStatusCommand::class => [
+            RunUpdatePropertyStatusCommandListener::class,
         ],
     ];
 

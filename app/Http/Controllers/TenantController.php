@@ -23,6 +23,7 @@ class TenantController extends Controller
                 ->where('name', 'like', "%{$request->q}%")
                 ->orWhere('identity_no', 'like', "%{$request->q}%")
                 ->orWhere('phone', 'like', "%{$request->q}%")
+                ->orWhere('status', 'like', "%{$request->q}%")
                 ->orWhere('email', 'like', "%{$request->q}%");
             }
         )
