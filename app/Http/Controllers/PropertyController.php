@@ -134,7 +134,6 @@ class PropertyController extends Controller
      */
     public function update(Request $request, Property $property)
     {
-        // $property->update($request->all());
         $data = $request->validate([
             'owner_id' => 'required|integer',
             'type' => 'required|string',
@@ -146,16 +145,21 @@ class PropertyController extends Controller
             'images' => ['nullable', 'array', 'max:5']
         ]);
 
-        $images = [];
+        // Retrieve the current images array
+        $existingImages = $property->images ?? [];
+
+        $newImages = [];
 
         if (isset($data['images']) && is_array($data['images'])) {
             foreach ($data['images'] as $image) {
                 $fileName = uniqid() . '.' . $image->getClientOriginalName();
                 $image->storeAs('images', $fileName, 'public');
-                array_push($images, $fileName);
+                array_push($newImages, $fileName);
             }
-            $data['images'] = $images;
         }
+
+        // Append new images to the existing images array
+        $data['images'] = array_merge($existingImages, $newImages);
 
         $property->update($data);
 

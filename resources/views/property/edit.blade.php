@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="flex justify-center my-6 text-sm ">
-                    <x-dark-button class="w-1/2 md:w-1/3">Edit Property</x-dark-button>
+                    <x-dark-button class="w-1/2 md:w-1/3">Update Property</x-dark-button>
                 </div>
             </div>
         </form>

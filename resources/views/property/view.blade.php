@@ -55,7 +55,7 @@
                     <div class="mx-auto w-3/4 border-t border-gray-200 dark:border-gray-600"></div>
                     <p class="p-4 dark:text-gray-300 ">{{ $property->address }}</p>
                     <div class="imgs-wrapper mt-2 flex flex-wrap">
-                        @if ($property->images !== null)
+                        @unless (empty($property->images) || is_null($property->images))
                             @foreach($property->images as $image)
                             <div class="flex flex-col">
                                 <a class="img-container mx-2" href="{{ asset('/storage/images/' . $image) }}" data-fancybox="{{ $property->id }}" data-caption="Property #{{$property->number}} picture">
@@ -68,7 +68,7 @@
                             @endforeach
                         @else
                         <small class="p-4 text-gray-400 dark:text-gray-300 ">( No images available)</small>
-                        @endif
+                        @endunless
                     </div>
                 </div>
             </div>
