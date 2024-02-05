@@ -72,12 +72,12 @@
               </td>
               <td class="px-4 py-3 text-xs">
                 @if ($property->status === 'vacant')
-                <x-badge.vacant />
+                <x-badge type="vacant">Vacant</x-badge>
                 <a href="{{ url('/rent/create?propid='.$property->id) }}">
-                  <x-badge.rentit />
+                  <x-badge type="rentit">Rent It</x-badge>
                 </a>
                 @else
-                <x-badge.occupied />
+                <x-badge type="rentit">Occupied</x-badge>
                 @endif
               </td>
               <td class="px-4 py-3 text-sm">

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
             $table->dateTime('rent_start');
             $table->dateTime('rent_end');
+            // status = 'pending','active','ended'
+            $table->string('status')->default('pending');
             $table->integer('deposit')->unsigned();
             $table->timestamps();
         });
