@@ -124,7 +124,7 @@ class PropertyController extends Controller
      */
     public function edit(Property $property)
     {
-        $owners = Owner::all();
+        $owners = Owner::orderBy('name', 'asc')->get();
 
         return view('property.edit', compact('property', 'owners'));
     }
@@ -132,9 +132,32 @@ class PropertyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePropertyRequest $request, Property $property)
+    public function update(Request $request, Property $property)
     {
-        $property->update($request->all());
+        // $property->update($request->all());
+        $data = $request->validate([
+            'owner_id' => 'required|integer',
+            'type' => 'required|string',
+            'address' => 'required|string',
+            'number' => 'required|string',
+            'rent' => 'required|integer',
+            'features' => 'required|string',
+            'status' => 'required|string',
+            'images' => ['nullable', 'array', 'max:5']
+        ]);
+
+        $images = [];
+
+        if (isset($data['images']) && is_array($data['images'])) {
+            foreach ($data['images'] as $image) {
+                $fileName = uniqid() . '.' . $image->getClientOriginalName();
+                $image->storeAs('images', $fileName, 'public');
+                array_push($images, $fileName);
+            }
+            $data['images'] = $images;
+        }
+
+        $property->update($data);
 
         return redirect()->route('property.index')->with('success', 'Property updated successfully!');
     }

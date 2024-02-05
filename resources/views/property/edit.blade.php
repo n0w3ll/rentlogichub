@@ -5,7 +5,7 @@
         </h2>
         <p class="text-sm text-gray-500">( House / Parking )</p>
 
-        <form method="POST" action="{{ route('property.update', $property) }}" class="mt-6">
+        <form method="POST" action="{{ route('property.update', $property) }}" class="mt-6" enctype="multipart/form-data">
             @csrf
             @method('patch')
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -71,9 +71,18 @@
                 </div>
 
                 <label class="block mt-4 text-sm">
-                    <span class="text-gray-700 dark:text-gray-400 font-medium">Upload Image</span>
-                    <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="image" type="file">
+                    <span class="text-gray-700 dark:text-gray-400 font-medium">Image <small class="text-gray-400"> (max 5 images)</small></span>
                 </label>
+                <div class="mt-2 upload__box">
+                    <div class="upload__btn-box">
+                        <label class="upload__btn">
+                            <p>Upload Images</p>
+                            <input type="file" multiple data-max_length="4" class="upload__inputfile" name="images[]">
+                        </label>
+                    </div>
+                    <div class="upload__img-wrap"></div>
+                </div>
+
                 <div class="flex justify-center my-6 text-sm ">
                     <x-dark-button class="w-1/2 md:w-1/3">Edit Property</x-dark-button>
                 </div>
