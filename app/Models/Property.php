@@ -43,7 +43,10 @@ class Property extends Model
         return $this->belongsToMany(Tenant::class, 'rents')
             ->withPivot('rent_start', 'rent_end');
     }
-    public function images(): HasMany{
-        return $this->hasMany(Image::class);
+    public function removeItem($itemId)
+    {
+        $this->update([
+            'images' => array_values(array_diff($this->images, [$itemId])),
+        ]);
     }
 }

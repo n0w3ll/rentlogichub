@@ -54,12 +54,17 @@
                     </div>
                     <div class="mx-auto w-3/4 border-t border-gray-200 dark:border-gray-600"></div>
                     <p class="p-4 dark:text-gray-300 ">{{ $property->address }}</p>
-                    <div class="imgs-wrapper mt-2">
+                    <div class="imgs-wrapper mt-2 flex flex-wrap">
                         @if ($property->images !== null)
                             @foreach($property->images as $image)
-                                <a class="img-container" href="{{ asset('/storage/' . $image) }}" data-fancybox="{{ $property->id }}" data-caption="Property #{{$property->number}} picture">
-                                    <img src="{{ asset('/storage/' . $image) }}" alt="multiple image" class="w-40 h-40 border border-gray-300 dark:border-gray-600 object-cover">
+                            <div class="flex flex-col">
+                                <a class="img-container mx-2" href="{{ asset('/storage/images/' . $image) }}" data-fancybox="{{ $property->id }}" data-caption="Property #{{$property->number}} picture">
+                                    <img src="{{ asset('/storage/images/' . $image) }}" alt="multiple image" class="w-40 h-40 border border-gray-300 dark:border-gray-600 object-cover">
                                 </a>
+                                <a href="{{ route('removeImg', ['property' => $property->id, 'imgid' => $image]) }}">
+                                    <p class="text-xs text-center px-2 py-1 font-semibold leading-tight text-red-700 dark:text-red-100 "><i class="fa-solid fa-trash-can"></i> Delete</p>
+                                </a>
+                            </div>
                             @endforeach
                         @else
                         <small class="p-4 text-gray-400 dark:text-gray-300 ">( No images available)</small>

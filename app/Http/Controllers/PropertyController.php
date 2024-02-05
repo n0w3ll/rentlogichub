@@ -71,18 +71,18 @@ class PropertyController extends Controller
             'status' => 'required|string',
             'images' => ['nullable', 'array', 'max:5']
         ]);
-        
+
         $images = [];
 
         if (isset($data['images']) && is_array($data['images'])) {
             foreach ($data['images'] as $image) {
                 $fileName = uniqid() . '.' . $image->getClientOriginalName();
-                $image_path =  $image->storeAs('images', $fileName, 'public');
-                array_push($images, $image_path);
+                $image->storeAs('images', $fileName, 'public');
+                array_push($images, $fileName);
             }
             $data['images'] = $images;
         }
-        
+
         Property::create($data);
 
         return redirect()->route('property.index')->with('success', 'Property added successfully!');
@@ -146,5 +146,17 @@ class PropertyController extends Controller
     {
         $property->delete();
         return redirect()->route('property.index')->with('success', 'Property successfully deleted!');
+    }
+
+    public function removeImg($propertyId, $itemId)
+    {
+        // Fetch the record from the database
+        $property = Property::find($propertyId);
+
+        // Remove the item from the 'images' array column
+        $property->removeItem($itemId);
+
+        // The item with ID $itemId has been removed from the 'data' array column
+        return back()->with('success', 'Image successfully deleted!');
     }
 }

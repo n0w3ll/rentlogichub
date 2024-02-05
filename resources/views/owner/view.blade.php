@@ -20,13 +20,14 @@
                 @if ($owner->properties->count() > 0)
                 <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                     @foreach ($owner->properties as $property)
-
-                    <div class="flex flex-col items-center bg-white rounded-lg shadow-xs dark:bg-gray-800 border border-1 overflow-hidden">
-                        <span class="font-bold uppercase w-full bg-blue-500 text-center">{{ $property->type }}<small class="text-gray-300 dark:text-white"> (No.{{ $property->number }})</small></span>
-                        <p class="p-4 dark:text-gray-300">{{ $property->address }}</p>
-                    </div>
+                    <a href="{{ route('property.show', $property->id)}}">
+                        <div class="flex flex-col items-center bg-white rounded-lg shadow-xs dark:bg-gray-800 border border-1 overflow-hidden">
+                            <span class="font-bold uppercase w-full bg-sky-200 text-sky-700 text-center">{{ $property->type }}<small class="text-sky-600 dark:text-sky-500"> (No.{{ $property->number }})</small></span>
+                            <p class="p-4 dark:text-gray-300">{{ $property->address }}</p>
+                        </div>
+                    </a>
                     @endforeach
-                @else
+                    @else
                     <h3 class="dark:text-gray-300">No properties available</h3>
                     @endif
                 </div>

@@ -23,6 +23,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('property', PropertyController::class )->middleware(['auth']);
+Route::get('/removeImg/{property}/{imgid}', [PropertyController::class, 'removeImg'])
+    ->name('removeImg')
+    ->middleware(['auth']);
 Route::resource('tenant', TenantController::class )->middleware(['auth']);
 Route::resource('rent', RentController::class )->middleware(['auth']);
 
