@@ -47,11 +47,28 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Total Tenants
+                <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                        Total Tenants : <span class="text-lg font-bold">{{ (intval($tenant_free) + intval($tenant_renting)) > 0 ? ($tenant_free + $tenant_renting) : 0 }}</span>
                     </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        0
+                    <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                    @if ($tenant_free > 0)
+                    <a href="{{ url('tenant?q=free')}}">
+                    @endif
+                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                        Free : <span class="text-bold">{{ ($tenant_free) > 0 ? ($tenant_free) : 0 }}</span>
+                    </span>
+                    @if ($tenant_free > 0)
+                    </a>
+                    @endif
+                    @if ($tenant_renting > 0)
+                    <a href="{{ url('tenant?q=renting')}}">
+                    @endif
+                    <span class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                        Renting : <span class="text-bold">{{ ($tenant_renting) > 0 ? ($tenant_renting) : 0 }}</span>
+                    </span>
+                    @if ($tenant_renting > 0)
+                    </a>
+                    @endunless
                     </p>
                 </div>
             </div>
