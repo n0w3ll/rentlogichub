@@ -17,7 +17,7 @@
         </div>
         <div class="mt-6 w-full">
             <div class="w-1/2 overflow-x-auto">
-                <div class="flex flex-col items-center bg-white rounded-lg shadow-xs dark:bg-gray-800 border border-1 overflow-hidden">
+                <div class="flex flex-col items-center bg-white rounded-lg shadow-xs dark:bg-gray-800 border dark:border-gray-600 overflow-hidden">
                     <div class="mt-3">
                         @if ($property->status === 'vacant')
                         <x-badge.vacant />
@@ -52,14 +52,18 @@
                             @endif
                         </ul>
                     </div>
-                    <div class="mx-auto w-3/4 border-t border-gray-500"></div>
+                    <div class="mx-auto w-3/4 border-t border-gray-200 dark:border-gray-600"></div>
                     <p class="p-4 dark:text-gray-300 ">{{ $property->address }}</p>
                     <div class="imgs-wrapper mt-2">
-                        @foreach($property->images as $image)
-                            <a class="img-container" href="{{ asset('/storage/' . $image) }}" data-fancybox="{{ $property->id }}" data-caption="Property #{{$property->number}} picture">
-                                <img src="{{ asset('/storage/' . $image) }}" alt="multiple image" class="w-20 h-20 border border-blue-600">
-                            </a>
-                        @endforeach
+                        @if ($property->images !== null)
+                            @foreach($property->images as $image)
+                                <a class="img-container" href="{{ asset('/storage/' . $image) }}" data-fancybox="{{ $property->id }}" data-caption="Property #{{$property->number}} picture">
+                                    <img src="{{ asset('/storage/' . $image) }}" alt="multiple image" class="w-40 h-40 border border-gray-300 dark:border-gray-600 object-cover">
+                                </a>
+                            @endforeach
+                        @else
+                        <small class="p-4 text-gray-400 dark:text-gray-300 ">( No images available)</small>
+                        @endif
                     </div>
                 </div>
             </div>
