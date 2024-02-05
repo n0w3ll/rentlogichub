@@ -24,7 +24,8 @@ class UpdateTenantStatus
         $rent = $event->rent;
 
         $tenant = $rent->tenant;
-        $tenant->status = 'renting';
+        // $tenant->status = 'renting';
+        $tenant->status = 'pending';
         $tenant->save();
     }
 }

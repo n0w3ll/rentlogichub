@@ -5,6 +5,9 @@ $typeColors = [
     'occupied' => 'red',
     'rentit' => 'orange',
     'vacant' => 'green',
+    'pending' => 'amber',
+    'ended' => 'sky',
+    'ongoing' => 'teal'
 ];
 
 $color = $typeColors[$type] ?? 'gray';

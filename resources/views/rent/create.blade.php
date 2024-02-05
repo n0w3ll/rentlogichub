@@ -44,7 +44,8 @@
                     <span class="text-gray-700 dark:text-gray-400 font-medium">Deposit (RM)</span>
                     <input type="number" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="deposit">
                 </label>
-
+                <input type="hidden" value="pending" name="status">
+                
                 <div class="flex justify-center my-6 text-sm ">
                     <x-dark-button class="w-1/2 md:w-1/3">Register Rent</x-dark-button>
                 </div>

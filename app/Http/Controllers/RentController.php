@@ -29,6 +29,7 @@ class RentController extends Controller
                     $builder
                         ->where('properties.type', 'like', "%{$request->q}%")
                         ->orWhere('properties.number', 'like', "%{$request->q}%")
+                        ->orWhere('rents.status', 'like', "%{$request->q}%")
                         ->orWhere('tenants.name', 'like', "%{$request->q}%");
                 }
             )

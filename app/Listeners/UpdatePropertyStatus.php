@@ -24,7 +24,8 @@ class UpdatePropertyStatus
         $rent = $event->rent;
 
         $property = $rent->property;
-        $property->status = 'occupied';
+        // $property->status = 'occupied';
+        $property->status = 'pending';
         $property->save();
     }
 }

@@ -38,6 +38,7 @@
               <th class="px-4 py-3">Start Rent</th>
               <th class="px-4 py-3">End Rent</th>
               <th class="px-4 py-3">Deposit</th>
+              <th class="px-4 py-3">Status</th>
               <th class="px-4 py-3">Actions</th>
             </tr>
           </thead>
@@ -67,6 +68,9 @@
               </td>
               <td class="px-4 py-3 text-sm">
                 RM {{ $rent->deposit }}
+              </td>
+              <td class="px-4 py-3 text-sm">
+                <x-badge type="{{ $rent->status }}">{{ $rent->status }}</x-badge>
               </td>
               <td class="px-4 py-3">
                 <div class="flex items-center space-x-4 text-sm">
