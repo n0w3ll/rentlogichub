@@ -54,9 +54,11 @@
                     </div>
                     <div class="mx-auto w-3/4 border-t border-gray-500"></div>
                     <p class="p-4 dark:text-gray-300 ">{{ $property->address }}</p>
-                    <div class="mt-2">
+                    <div class="imgs-wrapper mt-2">
                         @foreach($property->images as $image)
-                            <img src="{{ asset('/storage/' . $image) }}" alt="multiple image" class="w-20 h-20 border border-blue-600">
+                            <a class="img-container" href="{{ asset('/storage/' . $image) }}" data-fancybox="{{ $property->id }}" data-caption="Property #{{$property->number}} picture">
+                                <img src="{{ asset('/storage/' . $image) }}" alt="multiple image" class="w-20 h-20 border border-blue-600">
+                            </a>
                         @endforeach
                     </div>
                 </div>

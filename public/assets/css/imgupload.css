@@ -77,3 +77,13 @@
     position: relative;
     padding-bottom: 100%;
 }
+
+.imgs-wrapper {
+    padding: 20px;
+}
+
+.img-container {
+    width: 10rem;
+    height: 10rem;
+    display: inline-block;
+}

@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/imgupload.css') }}">
     <script src="{{ asset('assets/js/init-alpine.js') }}"></script>
 
+    <!-- FancyBox -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -32,6 +36,7 @@
     </div>
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/imgupload.js') }}"></script>
+    <script>Fancybox.bind("[data-fancybox]", {});</script>
 </body>
 
 </html>
