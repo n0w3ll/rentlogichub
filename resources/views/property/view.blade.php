@@ -54,6 +54,11 @@
                     </div>
                     <div class="mx-auto w-3/4 border-t border-gray-500"></div>
                     <p class="p-4 dark:text-gray-300 ">{{ $property->address }}</p>
+                    <div class="mt-2">
+                        @foreach($property->images as $image)
+                            <img src="{{ asset('/storage/' . $image) }}" alt="multiple image" class="w-20 h-20 border border-blue-600">
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

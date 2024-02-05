@@ -23,7 +23,7 @@
     border: 2px solid;
     background-color: #4045ba;
     border-color: #4045ba;
-    border-radius: 10px;
+    border-radius: 0.5rem;
     line-height: 26px;
     font-size: 14px;
 }

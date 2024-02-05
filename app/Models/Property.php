@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Property extends Model
@@ -20,7 +21,11 @@ class Property extends Model
         'rent',
         'features',
         'status',
-        'image'
+        'images'
+    ];
+
+    protected $casts = [
+        'images' => 'array'
     ];
 
     public function owner(): BelongsTo
@@ -37,5 +42,8 @@ class Property extends Model
     {
         return $this->belongsToMany(Tenant::class, 'rents')
             ->withPivot('rent_start', 'rent_end');
+    }
+    public function images(): HasMany{
+        return $this->hasMany(Image::class);
     }
 }

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('features');
             $table->string('status')->default('vacant');
             $table->integer('rent');
-            $table->string('image')->nullable();
+            $table->text('images')->nullable();
             // $table->foreignId('agent_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });

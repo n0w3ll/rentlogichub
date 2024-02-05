@@ -58,9 +58,32 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePropertyRequest $request)
+    public function store(Request $request)
     {
-        Property::create($request->all());
+        // $property = Property::create($request->all());
+        $data = $request->validate([
+            'owner_id' => 'required|integer',
+            'type' => 'required|string',
+            'address' => 'required|string',
+            'number' => 'required|string',
+            'rent' => 'required|integer',
+            'features' => 'required|string',
+            'status' => 'required|string',
+            'images' => ['nullable', 'array', 'max:5']
+        ]);
+        
+        $images = [];
+
+        if (isset($data['images']) && is_array($data['images'])) {
+            foreach ($data['images'] as $image) {
+                $fileName = uniqid() . '.' . $image->getClientOriginalName();
+                $image_path =  $image->storeAs('images', $fileName, 'public');
+                array_push($images, $image_path);
+            }
+            $data['images'] = $images;
+        }
+        
+        Property::create($data);
 
         return redirect()->route('property.index')->with('success', 'Property added successfully!');
     }
@@ -70,41 +93,29 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        // $currentTenant = $property->tenants->first(function ($tenant) {
-        //     return $tenant->pivot->rent_start <= now() && $tenant->pivot->rent_end >= now();
-        // });
-        
-        // $previousTenants = $property->tenants->filter(function ($tenant) {
-        //     return $tenant->pivot->rent_end < now();
-        // });
-        
-        // return view('property.view', compact('property', 'currentTenant', 'previousTenants'));
         $currentTenant = $property->tenants->first(function ($tenant) {
             return $tenant->pivot->rent_start <= now() && $tenant->pivot->rent_end >= now();
         });
-        
+
         $previousTenants = $property->tenants->filter(function ($tenant) {
             return $tenant->pivot->rent_end < now();
         });
-        
-        // Initialize variables
+
         $rentStartForCurrentTenant = null;
         $rentEndForCurrentTenant = null;
         $rentStartForPreviousTenants = [];
         $rentEndForPreviousTenants = [];
-        
-        // Access rent_start and rent_end for $currentTenant
+
         if ($currentTenant) {
             $rentStartForCurrentTenant = $currentTenant->pivot->rent_start;
             $rentEndForCurrentTenant = $currentTenant->pivot->rent_end;
         }
-        
-        // Access rent_start and rent_end for each $previousTenant
+
         foreach ($previousTenants as $previousTenant) {
             $rentStartForPreviousTenants[] = $previousTenant->pivot->rent_start;
             $rentEndForPreviousTenants[] = $previousTenant->pivot->rent_end;
         }
-        
+
         return view('property.view', compact('property', 'currentTenant', 'previousTenants', 'rentStartForCurrentTenant', 'rentEndForCurrentTenant', 'rentStartForPreviousTenants', 'rentEndForPreviousTenants'));
     }
 
