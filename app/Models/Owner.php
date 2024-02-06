@@ -19,8 +19,7 @@ class Owner extends Model
         'phone',
         'email',
         'registered_at',
-        'agreement',
-        'status'
+        'agreement'
     ];
 
     public function properties(): HasMany

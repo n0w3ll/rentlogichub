@@ -52,7 +52,6 @@
                     </label>
                 </div>
                 
-                
                 <div class="flex justify-center my-6 text-sm ">
                     <x-dark-button class="w-1/2 md:w-1/3">Make Payment</x-dark-button>
                 </div>

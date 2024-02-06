@@ -30,7 +30,7 @@ class CreateInvoiceListener
             'number' => 'INV-' . $uniqueId,
             'rent_id' => $rent->id,
             'amount' => $rent->deposit,
-            'paid_amount' => 0,
+            'fully_paid' => false,
         ]);
     }
 }

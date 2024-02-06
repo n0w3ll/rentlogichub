@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TransactionPaid;
+use App\Http\Requests\TransactionRequest;
 use App\Models\Invoice;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -13,7 +15,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transaction::latest()->paginate(10);
+        return view('transaction.index', compact('transactions'));
     }
 
     /**
@@ -30,9 +33,12 @@ class TransactionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TransactionRequest $request)
     {
-        //
+        $transaction = Transaction::create($request->validated());
+
+        event(new TransactionPaid($transaction));
+        return redirect()->route('transaction.index')->with('success', 'Rent updated successfully!');
     }
 
     /**

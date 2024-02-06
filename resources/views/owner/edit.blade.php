@@ -33,15 +33,11 @@
                     <span class="text-gray-700 dark:text-gray-400 font-medium">Registered At</span>
                     <input type="date" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" value="{{ old('registered_at', $owner->registered_at->toDateString()) }}" name="registered_at">
                 </label>
-                <label class="block text-sm mt-4 w-full md:w-1/2 ">
-                    <span class="text-gray-700 dark:text-gray-400 font-medium">Status</span>
-                    <input type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" value="{{ old('status', $owner->status) }}" name="status">
-                </label>
-            </div>
-                <label class="block mt-4 text-sm">
+                <label class="block mt-4 text-sm w-full md:w-1/2">
                     <span class="text-gray-700 dark:text-gray-400 font-medium">Agreement Doc</span>
                     <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="image" type="file">
                 </label>
+            </div>
                 
                 
 

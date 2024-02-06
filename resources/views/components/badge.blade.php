@@ -8,7 +8,9 @@ $typeColors = [
     'pending' => 'amber',
     'ended' => 'sky',
     'ongoing' => 'teal',
-    'pay' => 'lime'
+    'pay' => 'lime',
+    'yes' => 'green',
+    'no' => 'amber',
 ];
 
 $color = $typeColors[$type] ?? 'gray';

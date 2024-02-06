@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('rent_id');
             $table->foreign('rent_id')->references('id')->on('rents')->onDelete('cascade');
             $table->integer('amount');
-            $table->integer('paid_amount')->default(0);
+            $table->boolean('fully_paid')->default(false);
             $table->timestamps();
         });
     }

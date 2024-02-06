@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Events\RentCreated;
 use App\Events\RunUpdatePropertyStatusCommand;
+use App\Events\TransactionPaid;
 use App\Listeners\CreateInvoiceListener;
+use App\Listeners\MarkInvoiceAsFullyPaid;
 use App\Listeners\RunUpdatePropertyStatusCommandListener;
 use App\Listeners\UpdatePropertyStatus;
 use App\Listeners\UpdateTenantStatus;
@@ -31,6 +33,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         RunUpdatePropertyStatusCommand::class => [
             RunUpdatePropertyStatusCommandListener::class,
+        ],
+        TransactionPaid::class => [
+            MarkInvoiceAsFullyPaid::class,
         ],
     ];
 

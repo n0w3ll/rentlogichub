@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('email');
             $table->dateTime('registered_at');
             $table->string('agreement',255)->nullable();
-            $table->string('status')->default('free');
             $table->timestamps();
         });
     }

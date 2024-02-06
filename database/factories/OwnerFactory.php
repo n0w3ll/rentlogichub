@@ -23,7 +23,6 @@ class OwnerFactory extends Factory
             'email' => $this->faker->email(),
             'registered_at' => $this->faker->date(),
             'agreement' => $this->faker->paragraph(2),
-            'status' => $this->faker->randomElement(['free']),
         ];
     }
 }

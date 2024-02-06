@@ -26,6 +26,7 @@ class InvoiceController extends Controller
                         ->orWhere('amount', 'like', "%{$request->q}%"); 
                 }
             )
+            ->select('invoices.*')
             ->orderBy('invoices.updated_at', 'desc')
             ->paginate(10);
 
