@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -10,9 +11,27 @@ class InvoiceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $searched = $request->q;
+
+        $invoices = Invoice::leftJoin('rents', 'rents.id', '=', 'invoices.rent_id')
+            ->when(
+                $request->q,
+                function (Builder $builder) use ($request) {
+                    $builder
+                        ->where('number', 'like', "%{$request->q}%")
+                        ->orWhere('amount', 'like', "%{$request->q}%"); 
+                }
+            )
+            ->orderBy('invoices.updated_at', 'desc')
+            ->paginate(10);
+
+        $title = 'Delete Invoice';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
+
+        return view('invoice.index', compact('invoices', 'searched'));
     }
 
     /**

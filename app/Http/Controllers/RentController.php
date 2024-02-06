@@ -70,7 +70,7 @@ class RentController extends Controller
     public function store(StoreRentRequest $request)
     {
         $newRent = Rent::create($request->all());
-
+        
         event(new RentCreated($newRent));
         // Optional - assuming that there will be a backdated rent registered
         event(new RunUpdatePropertyStatusCommand('update:property-status'));

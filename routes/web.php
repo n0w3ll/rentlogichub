@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
@@ -28,6 +29,7 @@ Route::get('/removeImg/{property}/{imgid}', [PropertyController::class, 'removeI
     ->middleware(['auth']);
 Route::resource('tenant', TenantController::class )->middleware(['auth']);
 Route::resource('rent', RentController::class )->middleware(['auth']);
+Route::resource('invoice', InvoiceController::class )->middleware(['auth']);
 
 Route::get('owner/all', [OwnerController::class, 'showall'])->name('owner.all')->middleware(['auth']);
 Route::resource('owner', OwnerController::class )->middleware(['auth']);
