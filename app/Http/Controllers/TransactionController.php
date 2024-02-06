@@ -38,7 +38,7 @@ class TransactionController extends Controller
         $transaction = Transaction::create($request->validated());
 
         event(new TransactionPaid($transaction));
-        return redirect()->route('transaction.index')->with('success', 'Rent updated successfully!');
+        return redirect()->route('transaction.index')->with('success', 'Transaction successfull!');
     }
 
     /**
