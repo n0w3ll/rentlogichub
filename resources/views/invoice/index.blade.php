@@ -75,7 +75,7 @@
                 {{ $invoice->created_at->format('d-m-Y') }}
               </td>
 
-              <td class="px-4 py-3 text-xs text-center">
+              <td class="px-4 py-3 text-sm text-center">
                 <!-- <div class="flex items-center space-x-4 text-sm">
                   <a href="#" class="text-lg btn-info btn-flat text-green-400 rounded-lg dark:text-gray-400 fa-solid fa-money-check-dollar" aria-label="Make Payment"></a>
                   <a href="#" class="text-lg btn-danger btn-flat text-red-400 dark:text-gray-400 fa-solid fa-trash-can" data-confirm-delete="true"></a>
@@ -96,7 +96,7 @@
       </div>
     </div>
     @else
-    <p class="mt-4 py-3 text-gray-300 dark:text-gray-500 text-center">No rents available</p>
+    <p class="mt-4 py-3 text-gray-300 dark:text-gray-500 text-center">No invoices available</p>
     @endif
   </div>
 

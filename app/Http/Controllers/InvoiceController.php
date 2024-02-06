@@ -16,11 +16,13 @@ class InvoiceController extends Controller
         $searched = $request->q;
 
         $invoices = Invoice::leftJoin('rents', 'rents.id', '=', 'invoices.rent_id')
+            ->leftJoin('tenants', 'tenants.id', '=', 'rents.tenant_id')
             ->when(
                 $request->q,
                 function (Builder $builder) use ($request) {
                     $builder
                         ->where('number', 'like', "%{$request->q}%")
+                        ->orWhere('tenants.name', 'like', "%{$request->q}%")
                         ->orWhere('amount', 'like', "%{$request->q}%"); 
                 }
             )
