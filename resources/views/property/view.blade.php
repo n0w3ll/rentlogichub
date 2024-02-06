@@ -20,16 +20,16 @@
                 <div class="flex flex-col items-center bg-white rounded-lg shadow-xs dark:bg-gray-800 border dark:border-gray-600 overflow-hidden">
                     <div class="mt-3">
                         @if ($property->status === 'vacant')
-                        <x-badge.vacant />
+                        <x-badge type="vacant">Vacant</x-badge>
                         <a href="{{ url('/rent/create?propid='.$property->id) }}">
-                            <x-badge.rentit />
+                            <x-badge type="rentit">Rent It</x-badge>
                         </a>
                         @else
-                        <x-badge.occupied />
+                        <x-badge type="{{ $property->status }}">{{ $property->status }}</x-badge>
                         @endif
                     </div>
                     <div class="w-full p-4 flex flex-col text-left">
-                        <div class="font-semibold dark:text-gray-300 ">Current Tenant:</div>
+                        <div class="font-semibold dark:text-gray-300 ">{{ $property->status === 'pending' ? 'Pending' : 'Current' }} Tenant:</div>
                         @if (!$currentTenant)
                         <div class="ml-5 text-gray-400">- None -</div>
                         @else

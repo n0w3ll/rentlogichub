@@ -12,10 +12,12 @@ class DashboardController extends Controller
     {
         $prop_occupied = Property::where('status', 'occupied')->count();
         $prop_vacant = Property::where('status', 'vacant')->count();
+        $prop_pending = Property::where('status', 'pending')->count();
 
         $tenant_free = Tenant::where('status', 'free')->count();
         $tenant_renting = Tenant::where('status', 'renting')->count();
+        $tenant_pending = Tenant::where('status', 'pending')->count();
 
-        return view('dashboard', compact('prop_occupied','prop_vacant','tenant_free','tenant_renting')); 
+        return view('dashboard', compact('prop_occupied','prop_vacant','tenant_free','tenant_renting','prop_pending','tenant_pending')); 
     }
 }

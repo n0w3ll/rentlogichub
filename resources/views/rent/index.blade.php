@@ -14,7 +14,7 @@
         </div>
         <form action="{{ route('rent.index') }}" method="GET">
           <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for rent details" value="{{ $searched }}" name="q" aria-label="Search">
-      </form>
+        </form>
       </div>
       <div class="space-x-4">
         @unless ($searched == "")
@@ -28,6 +28,7 @@
         </a>
       </div>
     </div>
+    @if ($rents->count() > 0)
     <div class="mt-6 w-full overflow-hidden rounded-lg shadow-md">
       <div class="w-full overflow-x-auto">
         <table class="w-full whitespace-no-wrap">
@@ -89,6 +90,9 @@
         {{ $rents->links() }}
       </div>
     </div>
+    @else
+    <p class="mt-4 py-3 text-gray-300 dark:text-gray-500 text-center">No rents available</p>
+    @endif
   </div>
 
 </x-app-layout>

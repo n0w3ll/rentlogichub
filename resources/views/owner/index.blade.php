@@ -29,6 +29,7 @@
         </a>
       </div>
     </div>
+    @if ($owners->count() > 0)
     <div class="mt-6 w-full overflow-hidden rounded-lg shadow-md">
       <div class="w-full overflow-x-auto">
         <table class="w-full whitespace-no-wrap">
@@ -90,5 +91,8 @@
         {{ $owners->links() }}
       </div>
     </div>
+    @else
+    <p class="mt-4 py-3 text-gray-300 dark:text-gray-500 text-center">No owners available</p>
+    @endif
   </div>
 </x-app-layout>

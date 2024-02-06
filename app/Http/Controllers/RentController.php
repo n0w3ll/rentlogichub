@@ -72,6 +72,7 @@ class RentController extends Controller
         $newRent = Rent::create($request->all());
 
         event(new RentCreated($newRent));
+        // Optional - assuming that there will be a backdated rent registered
         event(new RunUpdatePropertyStatusCommand('update:property-status'));
         return redirect()->route('rent.index')->with('success', 'Rent registered successfully!');
     }

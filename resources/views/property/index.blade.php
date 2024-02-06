@@ -28,6 +28,7 @@
         </a>
       </div>
     </div>
+    @if ($properties->count() > 0)
     <div class="mt-6 w-full overflow-hidden rounded-lg shadow-md">
       <div class="w-full overflow-x-auto">
         <table class="w-full whitespace-no-wrap">
@@ -77,7 +78,7 @@
                   <x-badge type="rentit">Rent It</x-badge>
                 </a>
                 @else
-                <x-badge type="rentit">Occupied</x-badge>
+                <x-badge type="{{ $property->status }}">{{$property->status}}</x-badge>
                 @endif
               </td>
               <td class="px-4 py-3 text-sm">
@@ -100,5 +101,8 @@
         {{ $properties->links() }}
       </div>
     </div>
+    @else
+    <p class="mt-4 py-3 text-gray-300 dark:text-gray-500 text-center">No properties available</p>
+    @endif
   </div>
 </x-app-layout>

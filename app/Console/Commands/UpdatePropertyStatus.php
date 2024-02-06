@@ -28,22 +28,19 @@ class UpdatePropertyStatus extends Command
     {
         $today = now();
 
-        // Query the rents table for entries with rent_end in the past
         $expiredRents = Rent::where('rent_end', '<', $today)->get();
         $ongoingRents = Rent::where('rent_end', '>=', $today)->get();
 
         // Loop through expired rents and update the corresponding properties
+        // regardless rent paid or not
         foreach ($expiredRents as $expiredRent) {
             $property = $expiredRent->property;
             $tenant = $expiredRent->tenant;
 
-            // Check if the property is occupied
             if ($property->status == 'occupied') {
-                // Update property status to vacant
                 $property->update(['status' => 'vacant']);
             }
             if ($tenant->status == 'renting') {
-                // Update tenant status to free
                 $tenant->update(['status' => 'free']);
             }
         }
@@ -52,14 +49,17 @@ class UpdatePropertyStatus extends Command
             $property = $ongoingRent->property;
             $tenant = $ongoingRent->tenant;
 
-            // Check if the property is vacant
-            if ($property->status == 'vacant') {
-                // Update property status to occupied
-                $property->update(['status' => 'occupied']);
-            }
-            if ($tenant->status == 'free') {
-                // Update tenant status to renting
-                $tenant->update(['status' => 'renting']);
+            // Check if rent is already paid
+            if ($ongoingRent->paid === true) {
+                if ($property->status == 'vacant') {
+                    $property->update(['status' => 'occupied']);
+                }
+                if ($tenant->status == 'free') {
+                    $tenant->update(['status' => 'renting']);
+                }
+            } else {
+                $property->update(['status' => 'pending']);
+                $tenant->update(['status' => 'free']);
             }
         }
 

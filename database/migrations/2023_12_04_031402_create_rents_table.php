@@ -21,6 +21,7 @@ return new class extends Migration
             $table->dateTime('rent_end');
             // status = 'pending','active','ended'
             $table->string('status')->default('pending');
+            $table->boolean('paid')->default(false);
             $table->integer('deposit')->unsigned();
             $table->timestamps();
         });
