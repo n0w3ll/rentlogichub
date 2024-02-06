@@ -80,9 +80,11 @@
                   <a href="#" class="text-lg btn-info btn-flat text-green-400 rounded-lg dark:text-gray-400 fa-solid fa-money-check-dollar" aria-label="Make Payment"></a>
                   <a href="#" class="text-lg btn-danger btn-flat text-red-400 dark:text-gray-400 fa-solid fa-trash-can" data-confirm-delete="true"></a>
                 </div> -->
-                <span class="ml-2 px-2 py-1 font-semibold leading-tight text-lime-700 bg-lime-100 rounded-full dark:bg-lime-500 dark:text-lime-100 uppercase">
-                  Make Payment
-                </span>
+                <a href="{{ route('transaction.create',['inv' => $invoice->id]) }}">
+                  <span class="ml-2 px-2 py-1 font-semibold leading-tight text-lime-700 bg-lime-100 rounded-full dark:bg-lime-500 dark:text-lime-100 uppercase">
+                    Make Payment
+                  </span>
+                </a>
               </td>
             </tr>
             @endforeach

@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RentController;
 use App\Http\Controllers\TenantController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,6 +31,8 @@ Route::get('/removeImg/{property}/{imgid}', [PropertyController::class, 'removeI
 Route::resource('tenant', TenantController::class )->middleware(['auth']);
 Route::resource('rent', RentController::class )->middleware(['auth']);
 Route::resource('invoice', InvoiceController::class )->middleware(['auth']);
+Route::resource('transaction', TransactionController::class )->middleware(['auth']);
+// Route::get('transaction/create/{inv}', [TransactionController::class,'create'])->middleware(['auth']);
 
 Route::get('owner/all', [OwnerController::class, 'showall'])->name('owner.all')->middleware(['auth']);
 Route::resource('owner', OwnerController::class )->middleware(['auth']);

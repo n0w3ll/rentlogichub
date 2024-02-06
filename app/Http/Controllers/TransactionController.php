@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,12 @@ class TransactionController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $inv = $request->inv;
+        $invoices = Invoice::orderBy('created_at', 'desc')->get();
+
+        return view('transaction.create', compact('invoices','inv'));
     }
 
     /**
