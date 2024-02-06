@@ -10,6 +10,7 @@ use App\Models\Property;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class PropertyController extends Controller
@@ -175,15 +176,19 @@ class PropertyController extends Controller
         return redirect()->route('property.index')->with('success', 'Property successfully deleted!');
     }
 
-    public function removeImg($propertyId, $itemId)
+    public function removeImg($propertyId, $img)
     {
-        // Fetch the record from the database
         $property = Property::find($propertyId);
+        $imagePath = 'images/' . $img;
 
-        // Remove the item from the 'images' array column
-        $property->removeItem($itemId);
 
-        // The item with ID $itemId has been removed from the 'data' array column
-        return back()->with('success', 'Image successfully deleted!');
+        if (Storage::disk('public')->exists($imagePath)) {
+            Storage::disk('public')->delete($imagePath);
+            $property->removeItem($img);
+
+            return back()->with('success', 'Image successfully deleted!');
+        }
+
+        return back()->with('error', "Image '$img' not found.");
     }
 }

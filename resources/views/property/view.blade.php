@@ -61,7 +61,7 @@
                                 <a class="img-container mx-2" href="{{ asset('/storage/images/' . $image) }}" data-fancybox="{{ $property->id }}" data-caption="Property #{{$property->number}} picture">
                                     <img src="{{ asset('/storage/images/' . $image) }}" alt="multiple image" class="w-40 h-40 border border-gray-300 dark:border-gray-600 object-cover">
                                 </a>
-                                <a href="{{ route('removeImg', ['property' => $property->id, 'imgid' => $image]) }}">
+                                <a href="{{ route('removeImg', ['property' => $property->id, 'imgid' => $image]) }}"  class="delete-img">
                                     <p class="text-xs text-center px-2 py-1 font-semibold leading-tight text-red-700 dark:text-red-100 "><i class="fa-solid fa-trash-can"></i> Delete</p>
                                 </a>
                             </div>
