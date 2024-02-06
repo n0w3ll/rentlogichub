@@ -59,19 +59,10 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PropertyRequest $request)
     {
-        // $property = Property::create($request->all());
-        $data = $request->validate([
-            'owner_id' => 'required|integer',
-            'type' => 'required|string',
-            'address' => 'required|string',
-            'number' => 'required|string',
-            'rent' => 'required|integer',
-            'features' => 'required|string',
-            'status' => 'required|string',
-            'images' => ['nullable', 'array', 'max:5']
-        ]);
+        
+        $data = $request->validated();
 
         $images = [];
 
@@ -133,18 +124,9 @@ class PropertyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Property $property)
+    public function update(PropertyRequest $request, Property $property)
     {
-        $data = $request->validate([
-            'owner_id' => 'required|integer',
-            'type' => 'required|string',
-            'address' => 'required|string',
-            'number' => 'required|string',
-            'rent' => 'required|integer',
-            'features' => 'required|string',
-            'status' => 'required|string',
-            'images' => ['nullable', 'array', 'max:5']
-        ]);
+        $data = $request->validated();
 
         // Retrieve the current images array
         $existingImages = $property->images ?? [];
