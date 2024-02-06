@@ -7,3 +7,4 @@
 6. ~Image deleted from public storage~
 7. Newly created rent will have 'pending' and 'Invoice' will be created. Once payment done then change rent status to 'ongoing'
 8. All automatic status changes will be handled by events and listeners.
+9. Auto generate PDF Invoice using https://github.com/LaravelDaily/laravel-invoices
