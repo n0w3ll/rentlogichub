@@ -4,7 +4,7 @@
             Edit Owner
         </h2>
 
-        <form method="POST" action="{{ route('owner.update', $owner) }}" class="mt-6">
+        <form method="POST" action="{{ route('owners.update', $owner) }}" class="mt-6">
             @csrf
             @method('patch')
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">

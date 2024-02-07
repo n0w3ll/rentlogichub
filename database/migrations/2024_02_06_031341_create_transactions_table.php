@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('invoice_id');
-            $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
+            $table->foreignId('invoice_id')->constrained();
             $table->string('payment_method');
             $table->text('payment_proof')->nullable();
             $table->integer('paid_amount');

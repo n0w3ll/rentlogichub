@@ -4,7 +4,7 @@
       Payment
     </h2>
 
-    <form method="POST" action="{{route('transaction.store')}}" class="mt-6">
+    <form method="POST" action="{{route('transactions.store')}}" class="mt-6">
       @csrf
       <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <label class="block mt-4 text-sm">

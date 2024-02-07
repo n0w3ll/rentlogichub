@@ -46,7 +46,7 @@ class RentController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        return view('rent.index', compact('rents', 'searched'));
+        return view('rents.index', compact('rents', 'searched'));
     }
 
     /**
@@ -61,7 +61,7 @@ class RentController extends Controller
         $properties = Property::where('status', 'vacant')->get();
         $tenants = Tenant::orderBy('name', 'asc')->get();
 
-        return view('rent.create', compact('properties', 'tenants'));
+        return view('rents.create', compact('properties', 'tenants'));
     }
 
     /**
@@ -74,7 +74,7 @@ class RentController extends Controller
         event(new RentCreated($newRent));
         // Optional - assuming that there will be a backdated rent registered
         event(new RunUpdatePropertyStatusCommand('update:property-status'));
-        return redirect()->route('rent.index')->with('success', 'Rent registered successfully!');
+        return redirect()->route('rents.index')->with('success', 'Rent registered successfully!');
     }
 
     /**
@@ -91,7 +91,7 @@ class RentController extends Controller
     {
         // $properties = Property::where('status','vacant')->get();
 
-        return view('rent.edit', compact('rent'));
+        return view('rents.edit', compact('rent'));
     }
 
     /**
@@ -102,7 +102,7 @@ class RentController extends Controller
         $rent->update($request->all());
 
         event(new RunUpdatePropertyStatusCommand('update:property-status'));
-        return redirect()->route('rent.index')->with('success', 'Rent updated successfully!');
+        return redirect()->route('rents.index')->with('success', 'Rent updated successfully!');
     }
 
     /**
@@ -112,6 +112,6 @@ class RentController extends Controller
     {
         $rent->delete();
         event(new RunUpdatePropertyStatusCommand('update:property-status'));
-        return redirect()->route('rent.index')->with('success', 'Rent successfully deleted!');
+        return redirect()->route('rents.index')->with('success', 'Rent successfully deleted!');
     }
 }

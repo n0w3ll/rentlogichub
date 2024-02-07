@@ -11,13 +11,13 @@
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
           </svg>
         </div>
-        <form action="{{ route('invoice.index') }}" method="GET">
+        <form action="{{ route('invoices.index') }}" method="GET">
           <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for invoice details" value="{{ $searched }}" name="q" aria-label="Search">
         </form>
       </div>
       <div class="space-x-4">
         @unless ($searched == "")
-        <a class="text-right" href="{{ route('invoice.index') }}">
+        <a class="text-right" href="{{ route('invoices.index') }}">
           <button class="inline-flex items-center px-4 py-2 bg-purple-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
             < ALL INVOICES</button>
         </a>
@@ -81,8 +81,7 @@
 
               <td class="px-4 py-3 text-sm text-center">
                 @unless ($invoice->fully_paid)
-                <!-- <a href="{{-- url('/transaction/create?inv='.$invoice->id) --}}"> -->
-                <a href="{{ route('transaction.create',['inv' => $invoice->id]) }}">
+                <a href="{{ route('transactions.create',['inv' => $invoice->id]) }}">
                   <span class="ml-2 px-2 py-1 font-semibold leading-tight text-lime-700 bg-lime-100 rounded-full dark:bg-lime-500 dark:text-lime-100 uppercase">
                     Make Payment
                   </span>

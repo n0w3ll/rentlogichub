@@ -36,7 +36,7 @@ class OwnerController extends Controller
         $text = "Deleting this owner will also delete ALL his/her properties";
         confirmDelete($title, $text);
         
-        return view('owner.index', compact('owners','searched'));
+        return view('owners.index', compact('owners','searched'));
         
     }
 
@@ -45,7 +45,7 @@ class OwnerController extends Controller
      */
     public function create(): View
     {
-        return view('owner.create');        
+        return view('owners.create');        
     }
 
     /**
@@ -55,7 +55,7 @@ class OwnerController extends Controller
     {
         Owner::create($request->validated());
 
-        return redirect()->route('owner.index')->with('success', 'Owner created successfully!');
+        return redirect()->route('owners.index')->with('success', 'Owner created successfully!');
     }
 
     /**
@@ -63,7 +63,7 @@ class OwnerController extends Controller
      */
     public function show(Owner $owner): View
     {
-        return view('owner.view', compact('owner'));
+        return view('owners.view', compact('owner'));
     }
 
     /**
@@ -71,7 +71,7 @@ class OwnerController extends Controller
      */
     public function edit(Owner $owner)
     {
-        return view('owner.edit', compact('owner'));
+        return view('owners.edit', compact('owner'));
     }
 
     /**
@@ -81,7 +81,7 @@ class OwnerController extends Controller
     {
         $owner->update($request->validated());
 
-        return redirect()->route('owner.index')->with('success', 'Owner updated successfully!');
+        return redirect()->route('owners.index')->with('success', 'Owner updated successfully!');
     }
 
     /**
@@ -93,24 +93,24 @@ class OwnerController extends Controller
         return redirect()->back()->with('success', 'Owner successfully deleted');
     }
 
-    public function showall(Request $request)
-    {
-        $searched = $request->input('q');
+    // public function showall(Request $request)
+    // {
+    //     $searched = $request->input('q');
 
-        $owners = Owner::with('properties')
-        ->when(
-            $request->q,
-            function (Builder $builder) use ($request) {
-                $builder
-                ->where('name', 'like', "%{$request->q}%")
-                ->orWhere('identity_no', 'like', "%{$request->q}%")
-                ->orWhere('phone', 'like', "%{$request->q}%")
-                ->orWhere('email', 'like', "%{$request->q}%");
-            }
-        )
-        ->orderBy('created_at','desc')
-        ->paginate(10);
+    //     $owners = Owner::with('properties')
+    //     ->when(
+    //         $request->q,
+    //         function (Builder $builder) use ($request) {
+    //             $builder
+    //             ->where('name', 'like', "%{$request->q}%")
+    //             ->orWhere('identity_no', 'like', "%{$request->q}%")
+    //             ->orWhere('phone', 'like', "%{$request->q}%")
+    //             ->orWhere('email', 'like', "%{$request->q}%");
+    //         }
+    //     )
+    //     ->orderBy('created_at','desc')
+    //     ->paginate(10);
         
-        return view('owner.index', compact('owners','searched'));
-    }
+    //     return view('owners.index', compact('owners','searched'));
+    // }
 }

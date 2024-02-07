@@ -5,7 +5,7 @@
         </h2>
         <p class="text-sm text-gray-500">( House / Parking )</p>
 
-        <form method="POST" action="{{route('rent.store')}}" class="mt-6">
+        <form method="POST" action="{{route('rents.store')}}" class="mt-6">
             @csrf
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <label class="block mt-4 text-sm">

@@ -5,7 +5,7 @@
         </h2>
         <p class="text-sm text-gray-500">( House / Parking )</p>
 
-        <form method="POST" action="{{route('rent.update', $rent)}}" class="mt-6">
+        <form method="POST" action="{{route('rents.update', $rent)}}" class="mt-6">
             @csrf
             @method('patch')
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">

@@ -34,7 +34,7 @@ class TenantController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        return view('tenant.index', compact('tenants','searched'));
+        return view('tenants.index', compact('tenants','searched'));
     }
 
     /**
@@ -42,7 +42,7 @@ class TenantController extends Controller
      */
     public function create()
     {
-        return view('tenant.create');
+        return view('tenants.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class TenantController extends Controller
     {
         Tenant::create($request->all());
 
-        return redirect()->route('tenant.index')->with('success','Tenant added successfully!');
+        return redirect()->route('tenants.index')->with('success','Tenant added successfully!');
     }
 
     /**
@@ -68,7 +68,7 @@ class TenantController extends Controller
      */
     public function edit(Tenant $tenant)
     {
-        return view('tenant.edit', compact('tenant'));
+        return view('tenants.edit', compact('tenant'));
     }
 
     /**
@@ -78,7 +78,7 @@ class TenantController extends Controller
     {
         $tenant->update($request->all());
 
-        return redirect()->route('tenant.index')->with('success','Tenant updated successfully!');
+        return redirect()->route('tenants.index')->with('success','Tenant updated successfully!');
     }
 
     /**
@@ -87,6 +87,6 @@ class TenantController extends Controller
     public function destroy(Tenant $tenant)
     {
         $tenant->delete();
-        return redirect()->route('tenant.index')->with('success', 'Tenant successfully deleted!');
+        return redirect()->route('tenants.index')->with('success', 'Tenant successfully deleted!');
     }
 }

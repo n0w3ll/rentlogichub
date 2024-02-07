@@ -4,7 +4,7 @@
             New Tenant
         </h2>
 
-        <form method="POST" action="{{route('tenant.store')}}" class="mt-6">
+        <form method="POST" action="{{route('tenants.store')}}" class="mt-6">
             @csrf
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
             <div class="block md:flex md:space-x-4">

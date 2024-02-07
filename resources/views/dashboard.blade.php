@@ -20,7 +20,7 @@
                     <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">
 
                     @if ($prop_vacant > 0)
-                    <a href="{{ url('property?q=vacant')}}">
+                    <a href="{{ url('properties?q=vacant')}}">
                     @endif
                     <span class="mr-2 px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                         Vacant : <span class="text-bold">{{ ($prop_vacant) > 0 ? ($prop_vacant) : 0 }}</span>
@@ -30,7 +30,7 @@
                     @endif
 
                     @if ($prop_occupied > 0)
-                    <a href="{{ url('property?q=occupied')}}">
+                    <a href="{{ url('properties?q=occupied')}}">
                     @endif
                     <span class="mr-2 px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
                         Occupied : <span class="text-bold">{{ ($prop_occupied) > 0 ? ($prop_occupied) : 0 }}</span>
@@ -40,7 +40,7 @@
                     @endif
 
                     @if ($prop_pending > 0)
-                    <a href="{{ url('property?q=pending')}}">
+                    <a href="{{ url('properties?q=pending')}}">
                     @endif
                     <span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:text-yellow-100 dark:bg-yellow-700">
                         Pending : <span class="text-bold">{{ ($prop_pending) > 0 ? ($prop_pending) : 0 }}</span>
@@ -66,9 +66,9 @@
                     <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">
 
                     @if ($tenant_free > 0)
-                    <a href="{{ url('tenant?q=free')}}">
+                    <a href="{{ url('tenants?q=free')}}">
                     @endif
-                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-teal-700 bg-teal-100 rounded-full dark:bg-teal-700 dark:text-teal-100">
+                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-sky-700 bg-sky-100 rounded-full dark:bg-sky-700 dark:text-sky-100">
                         Free : <span class="text-bold">{{ ($tenant_free) > 0 ? ($tenant_free) : 0 }}</span>
                     </span>
                     @if ($tenant_free > 0)
@@ -76,9 +76,9 @@
                     @endif
 
                     @if ($tenant_renting > 0)
-                    <a href="{{ url('tenant?q=renting')}}">
+                    <a href="{{ url('tenants?q=renting')}}">
                     @endif
-                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-fuchsia-700 bg-fuchsia-100 rounded-full dark:text-fuchsia-100 dark:bg-fuchsia-700">
+                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-teal-700 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-700">
                         Renting : <span class="text-bold">{{ ($tenant_renting) > 0 ? ($tenant_renting) : 0 }}</span>
                     </span>
                     @if ($tenant_renting > 0)
@@ -86,7 +86,7 @@
                     @endif
 
                     @if ($tenant_pending > 0)
-                    <a href="{{ url('tenant?q=pending')}}">
+                    <a href="{{ url('tenants?q=pending')}}">
                     @endif
                     <span class="px-2 py-1 font-semibold leading-tight text-amber-700 bg-amber-100 rounded-full dark:text-amber-100 dark:bg-amber-700">
                         Pending : <span class="text-bold">{{ ($tenant_pending) > 0 ? ($tenant_pending) : 0 }}</span>

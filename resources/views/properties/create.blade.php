@@ -5,7 +5,7 @@
         </h2>
         <p class="text-sm text-gray-500">( House / Parking )</p>
 
-        <form method="POST" action="{{route('property.store')}}" class="mt-6" enctype="multipart/form-data">
+        <form method="POST" action="{{route('properties.store')}}" class="mt-6" enctype="multipart/form-data">
             @csrf
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <div class="mt-4 text-sm">

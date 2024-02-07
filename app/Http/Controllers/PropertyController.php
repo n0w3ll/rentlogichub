@@ -44,7 +44,7 @@ class PropertyController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        return view('property.index', compact('properties', 'searched'));
+        return view('properties.index', compact('properties', 'searched'));
     }
 
     /**
@@ -53,7 +53,7 @@ class PropertyController extends Controller
     public function create(): View
     {
         $owners = Owner::orderBy('name', 'asc')->get();
-        return view('property.create', compact('owners'));
+        return view('properties.create', compact('owners'));
     }
 
     /**
@@ -77,7 +77,7 @@ class PropertyController extends Controller
 
         Property::create($data);
 
-        return redirect()->route('property.index')->with('success', 'Property added successfully!');
+        return redirect()->route('properties.index')->with('success', 'Property added successfully!');
     }
 
     /**
@@ -108,7 +108,7 @@ class PropertyController extends Controller
             $rentEndForPreviousTenants[] = $previousTenant->pivot->rent_end;
         }
 
-        return view('property.view', compact('property', 'currentTenant', 'previousTenants', 'rentStartForCurrentTenant', 'rentEndForCurrentTenant', 'rentStartForPreviousTenants', 'rentEndForPreviousTenants'));
+        return view('properties.view', compact('property', 'currentTenant', 'previousTenants', 'rentStartForCurrentTenant', 'rentEndForCurrentTenant', 'rentStartForPreviousTenants', 'rentEndForPreviousTenants'));
     }
 
     /**
@@ -118,7 +118,7 @@ class PropertyController extends Controller
     {
         $owners = Owner::orderBy('name', 'asc')->get();
 
-        return view('property.edit', compact('property', 'owners'));
+        return view('properties.edit', compact('property', 'owners'));
     }
 
     /**
@@ -146,7 +146,7 @@ class PropertyController extends Controller
 
         $property->update($data);
 
-        return redirect()->route('property.index')->with('success', 'Property updated successfully!');
+        return redirect()->route('properties.index')->with('success', 'Property updated successfully!');
     }
 
     /**
@@ -155,7 +155,7 @@ class PropertyController extends Controller
     public function destroy(Property $property)
     {
         $property->delete();
-        return redirect()->route('property.index')->with('success', 'Property successfully deleted!');
+        return redirect()->route('properties.index')->with('success', 'Property successfully deleted!');
     }
 
     public function removeImg($propertyId, $img)

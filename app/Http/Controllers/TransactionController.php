@@ -16,7 +16,7 @@ class TransactionController extends Controller
     public function index()
     {
         $transactions = Transaction::latest()->paginate(10);
-        return view('transaction.index', compact('transactions'));
+        return view('transactions.index', compact('transactions'));
     }
 
     /**
@@ -29,7 +29,7 @@ class TransactionController extends Controller
         
         $invoices = Invoice::orderBy('created_at', 'desc')->get();
 
-        return view('transaction.create', compact('invoices','inv'));
+        return view('transactions.create', compact('invoices','inv'));
     }
 
     /**
@@ -40,7 +40,7 @@ class TransactionController extends Controller
         $transaction = Transaction::create($request->validated());
 
         event(new TransactionPaid($transaction));
-        return redirect()->route('transaction.index')->with('success', 'Transaction successfull!');
+        return redirect()->route('transactions.index')->with('success', 'Transaction successfull!');
     }
 
     /**

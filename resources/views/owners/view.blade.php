@@ -4,13 +4,13 @@
             {{ $owner->name }}'s {{$owner->properties->count() > 1 ? 'Properties' : 'Property'}}
         </h2>
 
-        <div class="flex justify-between items-center mt-6">
+        <div class="flex justify-between items-center my-6">
             <div class="space-x-4">
-                <a class="text-right" href="{{ route('owner.index') }}">
+                <a class="text-right" href="{{ route('owners.index') }}">
                     <button class="inline-flex items-center px-4 py-2 bg-purple-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
                         < ALL OWNERS</button>
                 </a>
-                <a class="text-right" href="{{ route('owner.edit', $owner->id) }}">
+                <a class="text-right" href="{{ route('owners.edit', $owner->id) }}">
                     <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Edit {{ $owner->name }}'s Details</button>
                 </a>
             </div>
@@ -18,9 +18,9 @@
         <div class="mt-6 w-full">
             <div class="w-full overflow-x-auto">
                 @if ($owner->properties->count() > 0)
-                <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+                <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-3">
                     @foreach ($owner->properties as $property)
-                    <a href="{{ route('property.show', $property->id)}}">
+                    <a href="{{ route('properties.show', $property->id)}}">
                         <div class="flex flex-col items-center bg-white rounded-lg shadow-xs dark:bg-gray-800 border border-1 overflow-hidden">
                             <span class="font-bold uppercase w-full bg-sky-200 text-sky-700 text-center">{{ $property->type }}<small class="text-sky-600 dark:text-sky-500"> (No.{{ $property->number }})</small></span>
                             <p class="p-4 dark:text-gray-300">{{ $property->address }}</p>

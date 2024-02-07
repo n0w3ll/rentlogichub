@@ -34,7 +34,7 @@ class InvoiceController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
-        return view('invoice.index', compact('invoices', 'searched'));
+        return view('invoices.index', compact('invoices', 'searched'));
     }
 
     /**

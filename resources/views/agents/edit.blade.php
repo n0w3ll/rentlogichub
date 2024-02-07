@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="container px-6 mx-auto grid">
         <h2 class="mt-6 mb-2 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Edit Tenant
+            Edit Agent
         </h2>
 
         <form method="POST" action="{{route('tenant.update', $tenant)}}" class="mt-6">
