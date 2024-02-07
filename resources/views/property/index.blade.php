@@ -74,7 +74,7 @@
               <td class="px-4 py-3 text-xs">
                 @if ($property->status === 'vacant')
                 <x-badge type="vacant">Vacant</x-badge>
-                <a href="{{ url('/rent/create?propid='.$property->id) }}">
+                <a class="ml-2" href="{{ url('/rent/create?propid='.$property->id) }}">
                   <x-badge type="rentit">Rent It</x-badge>
                 </a>
                 @else

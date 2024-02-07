@@ -18,6 +18,12 @@
                         @endforeach
                     </select>
                 </label>
+                <div class="mt-4">
+                  <label class="block text-sm mt-4 w-full md:w-1/2">
+                      <span class="text-gray-700 dark:text-gray-400 font-medium">Payable Amount</span>
+                      <h2 class="mt-2 text-lg text-gray-700 dark:text-gray-400 font-bold">RM {{ $invoice->amount }}</h2>                      
+                  </label>
+                </div>
                 <div class="mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400 font-medium">
                   Payment Method

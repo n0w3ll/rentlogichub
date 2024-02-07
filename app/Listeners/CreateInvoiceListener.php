@@ -26,7 +26,7 @@ class CreateInvoiceListener
 
         $uniqueId = substr(uniqid(), 0, 8);
         // Create a new Invoice model
-        $invoice = Invoice::create([
+        Invoice::create([
             'number' => 'INV-' . $uniqueId,
             'rent_id' => $rent->id,
             'amount' => $rent->deposit,

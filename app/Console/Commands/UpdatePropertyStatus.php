@@ -51,7 +51,7 @@ class UpdatePropertyStatus extends Command
 
             // Check if rent is already paid
             if ($ongoingRent->paid === true) {
-                if ($property->status == 'vacant') {
+                if (($property->status == 'vacant') || ($property->status == 'pending')) {
                     $property->update(['status' => 'occupied']);
                 }
                 if ($tenant->status == 'free') {

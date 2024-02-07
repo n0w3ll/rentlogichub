@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\RentStatusChanged;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -18,6 +19,23 @@ class Invoice extends Model
         'amount',
         'fully_paid'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($invoice) {
+            // Check if the 'fully_paid' attribute is being updated
+            if ($invoice->isDirty('fully_paid')) {
+                // Perform some action when the 'fully_paid' attribute is updated
+                if ($invoice->fully_paid)
+                {
+                    $invoice->rent->update(['paid' => true]);
+                    $invoice->rent->update(['status' => 'ongoing']);
+                }
+            }
+        });
+    }
 
     public function property(): HasOneThrough
     {

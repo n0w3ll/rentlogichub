@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\RentStatusChanged;
 use App\Events\RunUpdatePropertyStatusCommand;
 use App\Events\TransactionPaid;
 use Illuminate\Contracts\Queue\ShouldQueue;

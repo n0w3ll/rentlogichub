@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\RunUpdatePropertyStatusCommand;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,8 +22,25 @@ class Rent extends Model
         'property_id',
         'rent_start',
         'rent_end',
-        'deposit'
+        'deposit',
+        'status',
+        'paid'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($rent) {
+            // Check if the 'status' attribute is being updated
+            if ($rent->isDirty('status')) {
+                if ($rent->paid) {
+                    $rent->property->update(['status' => 'occupied']);
+                    $rent->tenant->update(['status' => 'renting']);
+                }
+            }
+        });
+    }
 
     public function tenant(): BelongsTo
     {

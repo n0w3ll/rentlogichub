@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Events\RentCreated;
+use App\Events\RentStatusChanged;
 use App\Events\RunUpdatePropertyStatusCommand;
 use App\Events\TransactionPaid;
 use App\Listeners\CreateInvoiceListener;
 use App\Listeners\MarkInvoiceAsFullyPaid;
+use App\Listeners\RentStatusChangedListener;
 use App\Listeners\RunUpdatePropertyStatusCommandListener;
 use App\Listeners\UpdatePropertyStatus;
 use App\Listeners\UpdateTenantStatus;
