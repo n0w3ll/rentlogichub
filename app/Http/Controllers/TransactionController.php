@@ -24,10 +24,9 @@ class TransactionController extends Controller
      */
     public function create(Request $request)
     {
-        $inv = $request->inv;
         $invoices = Invoice::orderBy('created_at', 'desc')->get();
 
-        return view('transaction.create', compact('invoices','inv'));
+        return view('transaction.create', compact('invoices'));
     }
 
     /**

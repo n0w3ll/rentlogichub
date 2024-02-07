@@ -8,3 +8,4 @@
 7. Newly created rent will have 'pending' and 'Invoice' will be created. Once payment done then change rent status to 'ongoing'
 8. All automatic status changes will be handled by events and listeners.
 9. Auto generate PDF Invoice using https://github.com/LaravelDaily/laravel-invoices
+10. Display validation errors on create forms

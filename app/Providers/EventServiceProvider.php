@@ -29,8 +29,8 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         RentCreated::class => [
-            UpdatePropertyStatus::class,
-            UpdateTenantStatus::class,
+            // UpdatePropertyStatus::class,
+            // UpdateTenantStatus::class,
             CreateInvoiceListener::class,
         ],
         RunUpdatePropertyStatusCommand::class => [

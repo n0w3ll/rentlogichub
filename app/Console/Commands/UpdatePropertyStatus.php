@@ -37,12 +37,13 @@ class UpdatePropertyStatus extends Command
             $property = $expiredRent->property;
             $tenant = $expiredRent->tenant;
 
-            if ($property->status == 'occupied') {
+            if (($property->status == 'occupied') || ($property->status == 'pending')) {
                 $property->update(['status' => 'vacant']);
             }
             if ($tenant->status == 'renting') {
                 $tenant->update(['status' => 'free']);
             }
+            $expiredRent->update(['status' => 'ended']);
         }
 
         foreach ($ongoingRents as $ongoingRent) {
@@ -57,9 +58,6 @@ class UpdatePropertyStatus extends Command
                 if ($tenant->status == 'free') {
                     $tenant->update(['status' => 'renting']);
                 }
-            } else {
-                $property->update(['status' => 'pending']);
-                $tenant->update(['status' => 'free']);
             }
         }
 

@@ -81,7 +81,8 @@
 
               <td class="px-4 py-3 text-sm text-center">
                 @unless ($invoice->fully_paid)
-                <a href="{{ url('/transaction/create?inv='.$invoice->id) }}">
+                <!-- <a href="{{-- url('/transaction/create?inv='.$invoice->id) --}}"> -->
+                <a href="{{ route('transaction.create',['inv' => $invoice->id]) }}">
                   <span class="ml-2 px-2 py-1 font-semibold leading-tight text-lime-700 bg-lime-100 rounded-full dark:bg-lime-500 dark:text-lime-100 uppercase">
                     Make Payment
                   </span>
