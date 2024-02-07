@@ -43,7 +43,7 @@ class RentController extends Controller
             ->paginate(10);
 
         $title = 'Delete Rent';
-        $text = "Are you sure you want to delete?";
+        $text = "This will also delete related invoices and transactions.";
         confirmDelete($title, $text);
 
         return view('rents.index', compact('rents', 'searched'));
