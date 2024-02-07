@@ -10,9 +10,12 @@ class AgentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $searched = $request->q;
+        $agents = Agent::latest()->paginate(10);
+
+        return view('agents.index', compact('agents','searched'));
     }
 
     /**
@@ -20,7 +23,7 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

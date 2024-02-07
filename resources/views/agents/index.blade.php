@@ -11,8 +11,8 @@
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
           </svg>
         </div>
-        <form action="{{ route('tenant.index') }}" method="GET">
-          <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" name="q" value="{{ $searched }}" placeholder="Search for tenant" aria-label="Search">
+        <form action="{{ route('agents.index') }}" method="GET">
+          <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" name="q" value="{{ $searched }}" placeholder="Search for agent" aria-label="Search">
         </form>
       </div>
       <div class="space-x-4">
@@ -20,20 +20,14 @@
         @unless ($searched == "")
         <a class="text-right" href="{{ route('tenant.index') }}">
           <button class="inline-flex items-center px-4 py-2 bg-purple-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple-700 focus:bg-purple-700 active:bg-purple-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-            < ALL TENANTS</button>
+            < ALL AGENTS</button>
         </a>
         @endunless
 
-        <a class="text-right" href="{{ route('tenant.create') }}">
-          <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">+ New Tenant</button>
+        <a class="text-right" href="{{ route('agents.create') }}">
+          <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">+ New Agent</button>
         </a>
       </div>
-    </div>
-    <div class="mt-4 ml-3 flex text-sm text-gray-400 gap-3">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
-        </svg> 
-        <span class="ml-3">Currently Renting</span>
     </div>
     <div class="mt-6 w-full overflow-hidden rounded-lg shadow-md">
       <div class="w-full overflow-x-auto">
@@ -41,7 +35,7 @@
           <thead>
             <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
               <th class="px-4 py-3">Full Name</th>
-              <th class="px-4 py-3">Identity/Passport No.</th>
+              <th class="px-4 py-3">Vendor</th>
               <th class="px-4 py-3">Phone</th>
               <th class="px-4 py-3">Email</th>
               <th class="px-4 py-3">Reg Date</th>
@@ -49,46 +43,39 @@
             </tr>
           </thead>
           <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-            @foreach($tenants as $tenant)
+            @foreach($agents as $agent)
             <tr class="text-gray-700 dark:text-gray-400">
               <td class="px-4 py-3">
                 <div class="flex items-center text-sm">
-                  
-                  <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                    @if ($tenant->status == 'renting')
-                      <a href="{{ url('/rent?q='.$tenant->name) }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
-                        </svg>
-                      </a>
-                    @endif
-                  </div>
                   <div>
                     <p class="font-bold text-gray-600 dark:text-gray-400">
                       
                       <a href="">
-                        {{ $tenant->name }}
+                        {{ $agent->name }}
                       </a>
                     </p>
                   </div>
                 </div>
               </td>
-              <td class="px-4 py-3 text-sm">
-                {{ $tenant->identity_no }}
-              </td>
               <td class="px-4 py-3 text-xs">
-                {{ $tenant->phone}}
+                {{ $agent->phone}}
               </td>
               <td class="px-4 py-3 text-sm">
-                {{ $tenant->email}}
+                {{ $agent->vendor_id}}
               </td>
               <td class="px-4 py-3 text-sm">
-                {{ $tenant->registered_at->format('d-M-Y') }}
+                {{ $agent->phone}}
+              </td>
+              <td class="px-4 py-3 text-sm">
+                {{ $agent->email}}
+              </td>
+              <td class="px-4 py-3 text-sm">
+                {{ $agent->created_at->format('d-M-Y') }}
               </td>
               <td class="px-4 py-3">
                 <div class="flex items-center space-x-4 text-sm">
-                  <a href="{{ route('tenant.edit', $tenant->id) }}" class="text-lg btn-info btn-flat text-blue-500 rounded-lg dark:text-gray-400 fa-solid fa-pencil" aria-label="Edit"></a>
-                  <a href="{{ route('tenant.destroy', $tenant->id) }}" class="text-lg btn-danger btn-flat text-red-400 dark:text-gray-400 fa-solid fa-trash-can" data-confirm-delete="true"></a>
+                  <a href="{{ route('agents.edit', $agent->id) }}" class="text-lg btn-info btn-flat text-blue-500 rounded-lg dark:text-gray-400 fa-solid fa-pencil" aria-label="Edit"></a>
+                  <a href="{{ route('agents.destroy', $agent->id) }}" class="text-lg btn-danger btn-flat text-red-400 dark:text-gray-400 fa-solid fa-trash-can" data-confirm-delete="true"></a>
                 </div>
               </td>
             </tr>
@@ -98,7 +85,7 @@
       </div>
       <!-- Pagination Start -->
       <div class="px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-        {{ $tenants->links() }}
+        {{ $agents->links() }}
       </div>
     </div>
   </div>
