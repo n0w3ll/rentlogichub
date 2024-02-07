@@ -22,13 +22,13 @@ class PropertyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'owner_id' => 'required|integer',
-            'type' => 'required|string',
-            'address' => 'required|string',
-            'number' => 'required|string',
-            'rent' => 'required|integer',
-            'features' => 'required|string',
-            'status' => 'required|string',
+            'owner_id' => ['required','integer'],
+            'type' => ['required','string'],
+            'address' => ['required','string'],
+            'number' => ['required','string'],
+            'rent' => ['required','integer'],
+            'features' => ['required','string'],
+            'status' => ['required','string'],
             'images' => ['nullable', 'array', 'max:5']
         ];
     }

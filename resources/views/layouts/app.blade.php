@@ -20,11 +20,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 
     <!-- Scripts -->
-    @include('sweetalert::alert')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
         @include('layouts.sidebar')
         <div class="flex flex-col flex-1 w-full">
@@ -37,9 +37,7 @@
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/imgupload.js') }}"></script>
     <script src="{{ asset('assets/js/swal.js') }}"></script>
-    <script>
-        Fancybox.bind("[data-fancybox]", {});
-    </script>
+    <script>Fancybox.bind("[data-fancybox]", {});</script>
 </body>
 
 </html>

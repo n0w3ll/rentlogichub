@@ -9,3 +9,6 @@
 8. All automatic status changes will be handled by events and listeners.
 9. Auto generate PDF Invoice using https://github.com/LaravelDaily/laravel-invoices
 10. Display validation errors on create forms
+
+### HEADS UP!
+1. check for $request->all() and change to $request->validated() using FormRequest
