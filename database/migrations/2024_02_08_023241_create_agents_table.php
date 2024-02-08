@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('vendor_id')->nullable()->constrained();
             $table->string('name');
-            $table->foreignId('vendor_id')->constrained();
             $table->string('phone');
             $table->string('email');
             $table->timestamps();

@@ -93,24 +93,4 @@ class OwnerController extends Controller
         return redirect()->back()->with('success', 'Owner successfully deleted');
     }
 
-    // public function showall(Request $request)
-    // {
-    //     $searched = $request->input('q');
-
-    //     $owners = Owner::with('properties')
-    //     ->when(
-    //         $request->q,
-    //         function (Builder $builder) use ($request) {
-    //             $builder
-    //             ->where('name', 'like', "%{$request->q}%")
-    //             ->orWhere('identity_no', 'like', "%{$request->q}%")
-    //             ->orWhere('phone', 'like', "%{$request->q}%")
-    //             ->orWhere('email', 'like', "%{$request->q}%");
-    //         }
-    //     )
-    //     ->orderBy('created_at','desc')
-    //     ->paginate(10);
-        
-    //     return view('owners.index', compact('owners','searched'));
-    // }
 }

@@ -23,7 +23,9 @@
               <td class="px-4 py-3">
                 <div class="flex items-center text-sm">
                   <div>
-                    <p class="font-semibold">{{ $transaction->invoice->number }}</p>
+                    <a href="{{ route('invoices.index', ['q' => $transaction->invoice->number]) }}">
+                      <p class="font-semibold">{{ $transaction->invoice->number }}</p>
+                    </a>
                   </div>
                 </div>
               </td>

@@ -205,3 +205,4 @@ using bootstrap is possible)
    - Command : **update:property-status**
    - App\Console\Commands\UpdatePropertyStatus WILL only check 'RENT_END' from 'rents' table either manually or scheduled and will change $property->status to 'vacant' and $tenant->status to 'free' if 'RENT_END' < now()
    - It will also check if 'RENT_END' >= now() and change $property->status to 'occupied' and $tenant->status to 'renting' 
+   - Update app\Console\Kernel accordingly for schedule timing

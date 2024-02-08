@@ -12,7 +12,7 @@ class Agent extends Model
 
     protected $fillable = [
         'name',
-        'vendor'.
+        'vendor_id',
         'phone',
         'email'
     ];
