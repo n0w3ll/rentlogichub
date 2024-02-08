@@ -25,6 +25,7 @@ class AgentController extends Controller
                         ->where('agents.name', 'like', "%{$request->q}%")
                         ->orWhere('agents.phone', 'like', "%{$request->q}%")
                         ->orWhere('email', 'like', "%{$request->q}%")
+                        ->orWhere('agents.status', 'like', "%{$request->q}%")
                         ->orWhere('vendors.name', 'like', "%{$request->q}%");
                 }
             )
@@ -71,7 +72,7 @@ class AgentController extends Controller
     public function edit(Agent $agent)
     {
         $vendors = Vendor::orderBy('name', 'asc')->get();
-        return view('agents.edit', compact('vendors'));
+        return view('agents.edit', compact('agent','vendors'));
     }
 
     /**

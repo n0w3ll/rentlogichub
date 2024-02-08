@@ -15,7 +15,7 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Total Properties : <span class="text-lg font-bold">{{ (intval($prop_vacant) + intval($prop_occupied)) > 0 ? ($prop_vacant + $prop_occupied) : 0 }}</span>
+                        Total Properties : <span class="text-lg font-bold">{{ (intval($prop_vacant) + intval($prop_occupied) + intval($prop_pending)) > 0 ? (intval($prop_vacant) + intval($prop_occupied) + intval($prop_pending)) : 0 }}</span>
                     </p>
                     <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">
 
@@ -61,7 +61,7 @@
                 </div>
                 <div>
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Total Tenants : <span class="text-lg font-bold">{{ (intval($tenant_free) + intval($tenant_renting) + intval($tenant_pending)) > 0 ? ($tenant_free + $tenant_renting + $tenant_pending) : 0 }}</span>
+                        Total Tenants : <span class="text-lg font-bold">{{ (intval($tenant_free) + intval($tenant_renting) + intval($tenant_pending)) > 0 ? (intval($tenant_free) + intval($tenant_renting) + intval($tenant_pending)) : 0 }}</span>
                     </p>
                     <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">
 
@@ -107,10 +107,28 @@
                 </div>
                 <div>
                     <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Total Agents
+                        Total Agents : <span class="text-lg font-bold">{{ (intval($active_agents) + intval($inactive_agents)) > 0 ? (intval($active_agents) + intval($inactive_agents)) : 0 }}</span>
                     </p>
                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        0
+                    @if ($active_agents > 0)
+                    <a href="{{ url('agents?q=actv')}}">
+                    @endif
+                    <span class="text-sm px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                        Active : <span class="text-bold">{{ ($active_agents) > 0 ? ($active_agents) : 0 }}</span>
+                    </span>
+                    @if ($active_agents > 0)
+                    </a>
+                    @endif
+
+                    @if ($inactive_agents > 0)
+                    <a href="{{ url('agents?q=inatv')}}">
+                    @endif
+                    <span class="text-sm ml-2 px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                        Inactive : <span class="text-bold">{{ ($inactive_agents) > 0 ? ($inactive_agents) : 0 }}</span>
+                    </span>
+                    @if ($inactive_agents > 0)
+                    </a>
+                    @endif
                     </p>
                 </div>
             </div>

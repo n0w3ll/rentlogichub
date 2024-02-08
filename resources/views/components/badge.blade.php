@@ -10,6 +10,8 @@ $typeColors = [
     'ongoing' => 'teal',
     'pay' => 'lime',
     'yes' => 'green',
+    'active' => 'green',
+    'inactive' => 'red',
     'no' => 'amber',
 ];
 

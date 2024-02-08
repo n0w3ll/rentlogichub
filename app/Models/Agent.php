@@ -14,7 +14,8 @@ class Agent extends Model
         'name',
         'vendor_id',
         'phone',
-        'email'
+        'email',
+        'status'
     ];
 
     public function vendor(): BelongsTo

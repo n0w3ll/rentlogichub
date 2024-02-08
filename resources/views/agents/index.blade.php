@@ -39,6 +39,7 @@
               <th class="px-4 py-3">Vendor</th>
               <th class="px-4 py-3">Phone</th>
               <th class="px-4 py-3">Email</th>
+              <th class="px-4 py-3">Status</th>
               <th class="px-4 py-3">Reg Date</th>
               <th class="px-4 py-3">Action</th>
             </tr>
@@ -66,9 +67,15 @@
               <td class="px-4 py-3 text-sm">
                 {{ $agent->phone}}
               </td>
-              
               <td class="px-4 py-3 text-sm">
                 {{ $agent->email}}
+              </td>
+              <td class="px-4 py-3 text-sm">
+                @if ($agent->status == 'actv')
+                <x-badge type="active">ACTIVE</x-badge>
+                @else
+                <x-badge type="inactive">INACTIVE</x-badge>
+                @endif
               </td>
               <td class="px-4 py-3 text-sm">
                 {{ $agent->created_at->format('d-M-Y') }}

@@ -36,6 +36,20 @@
                         <input type="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" value="{{ old('email', $agent->email )}}" name="email">
                     </label>
                 </div>
+                <div class="mt-4 text-sm">
+                <span class="text-gray-700 dark:text-gray-400 font-medium">
+                  Status
+                </span>
+                <div class="mt-2">
+                  <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
+                    <input type="radio" {{ old('active', $agent->status) == 'actv' ? 'checked' : '' }} class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="status" value="actv">
+                    <span class="ml-2">Active</span>
+                  </label>
+                  <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                    <input type="radio" {{ old('active', $agent->status) == 'inatv' ? 'checked' : '' }} class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" name="status" value="inatv">
+                    <span class="ml-2">Inactive</span>
+                  </label>
+                </div>
                 
                 <div class="flex justify-center my-6 text-sm ">
                     <x-dark-button class="w-1/2 md:w-1/3">Update Agent</x-dark-button>

@@ -26,6 +26,7 @@ class AgentRequest extends FormRequest
             'name' => 'required|string',
             'phone' => 'required|string',
             'email' => 'required|email',
+            'status' => 'required|string',
         ];
     }
 }
