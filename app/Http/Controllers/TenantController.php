@@ -27,7 +27,7 @@ class TenantController extends Controller
                 ->orWhere('email', 'like', "%{$request->q}%");
             }
         )
-        ->orderBy('created_at', 'desc')
+        ->orderBy('name', 'asc')
         ->paginate(10);
 
         $title = 'Delete Tenant';

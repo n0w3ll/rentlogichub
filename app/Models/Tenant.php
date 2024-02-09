@@ -19,7 +19,6 @@ class Tenant extends Model
         'identity_no',
         'phone',
         'email',
-        'registered_at',
         'agreement',
         'status'
     ];

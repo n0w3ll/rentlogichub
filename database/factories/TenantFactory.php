@@ -21,7 +21,6 @@ class TenantFactory extends Factory
             'identity_no' => $this->faker->numberBetween(100000, 9999999),
             'phone' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
-            'registered_at' => $this->faker->date(),
             'agreement' => $this->faker->paragraph(2),
             'status' => $this->faker->randomElement(['free']),
         ];

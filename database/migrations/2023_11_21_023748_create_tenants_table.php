@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('identity_no');
             $table->string('phone');
             $table->string('email');
-            $table->dateTime('registered_at');
             $table->string('agreement')->nullable();
             $table->string('status')->default('free');
             $table->timestamps();
