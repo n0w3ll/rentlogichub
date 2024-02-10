@@ -11,7 +11,7 @@
 10. ~Display validation errors on create forms - currently with SweetAlert2~
 11. Using \Carbon\CarbonImmutable for date
 12. Log transactions and actions
-13. Notifications
+13. Notifications (database and email)
 
 ### HEADS UP!
 1. check for $request->all() and change to $request->validated() using FormRequest

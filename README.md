@@ -143,6 +143,8 @@ using bootstrap is possible)
 
 - Ability to put system on maintenance.
 
+- Only superadmin can change the settings
+
 ## DB Relationships
 
 - Property belongsTo Tenant
