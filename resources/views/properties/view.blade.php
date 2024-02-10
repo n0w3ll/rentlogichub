@@ -22,7 +22,7 @@
                         @if ($property->status === 'vacant')
                         <x-badge type="vacant">Vacant</x-badge>
                         <a href="{{ route('rents.create', ['propid' => $property->id]) }}">
-                            <x-badge type="rentit">Rent It</x-badge>
+                            <x-badge class="ml-3" type="rentit">Rent It</x-badge>
                         </a>
                         @else
                         <x-badge type="{{ $property->status }}">{{ $property->status }}</x-badge>
