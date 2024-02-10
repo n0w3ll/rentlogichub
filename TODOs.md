@@ -12,6 +12,7 @@
 11. Using \Carbon\CarbonImmutable for date
 12. Log transactions and actions
 13. Notifications (database and email)
+14. Tenants show will display tenant's previous rent information
 
 ### HEADS UP!
 1. check for $request->all() and change to $request->validated() using FormRequest

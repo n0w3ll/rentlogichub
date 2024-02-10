@@ -38,7 +38,7 @@
               <th class="px-4 py-3">Owner</th>
               <th class="px-4 py-3">Rent</th>
               <th class="px-4 py-3">Status</th>
-              <th class="px-4 py-3">Date</th>
+              <th class="px-4 py-3">Reg Date</th>
               <th class="px-4 py-3">Actions</th>
             </tr>
           </thead>

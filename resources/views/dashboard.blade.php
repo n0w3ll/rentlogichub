@@ -17,12 +17,12 @@
                     <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                         Total Properties : <span class="text-lg font-bold">{{ (intval($prop_vacant) + intval($prop_occupied) + intval($prop_pending)) > 0 ? (intval($prop_vacant) + intval($prop_occupied) + intval($prop_pending)) : 0 }}</span>
                     </p>
-                    <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
 
                     @if ($prop_vacant > 0)
                     <a href="{{ url('properties?q=vacant')}}">
                     @endif
-                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                    <span class="text-sm whitespace-nowrap mr-2 px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                         Vacant : <span class="text-bold">{{ ($prop_vacant) > 0 ? ($prop_vacant) : 0 }}</span>
                     </span>
                     @if ($prop_vacant > 0)
@@ -32,7 +32,7 @@
                     @if ($prop_occupied > 0)
                     <a href="{{ url('properties?q=occupied')}}">
                     @endif
-                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                    <span class="text-sm whitespace-nowrap mr-2 px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
                         Occupied : <span class="text-bold">{{ ($prop_occupied) > 0 ? ($prop_occupied) : 0 }}</span>
                     </span>
                     @if ($prop_occupied > 0)
@@ -42,7 +42,7 @@
                     @if ($prop_pending > 0)
                     <a href="{{ url('properties?q=pending')}}">
                     @endif
-                    <span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:text-yellow-100 dark:bg-yellow-700">
+                    <span class="text-sm whitespace-nowrap px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:text-yellow-100 dark:bg-yellow-700">
                         Pending : <span class="text-bold">{{ ($prop_pending) > 0 ? ($prop_pending) : 0 }}</span>
                     </span>
                     @if ($prop_pending > 0)
@@ -63,12 +63,12 @@
                 <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                         Total Tenants : <span class="text-lg font-bold">{{ (intval($tenant_free) + intval($tenant_renting) + intval($tenant_pending)) > 0 ? (intval($tenant_free) + intval($tenant_renting) + intval($tenant_pending)) : 0 }}</span>
                     </p>
-                    <p class="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
 
                     @if ($tenant_free > 0)
                     <a href="{{ url('tenants?q=free')}}">
                     @endif
-                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-sky-700 bg-sky-100 rounded-full dark:bg-sky-700 dark:text-sky-100">
+                    <span class="text-sm whitespace-nowrap mr-2 px-2 py-1 font-semibold leading-tight text-sky-700 bg-sky-100 rounded-full dark:bg-sky-700 dark:text-sky-100">
                         Free : <span class="text-bold">{{ ($tenant_free) > 0 ? ($tenant_free) : 0 }}</span>
                     </span>
                     @if ($tenant_free > 0)
@@ -78,7 +78,7 @@
                     @if ($tenant_renting > 0)
                     <a href="{{ url('tenants?q=renting')}}">
                     @endif
-                    <span class="mr-2 px-2 py-1 font-semibold leading-tight text-teal-700 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-700">
+                    <span class="text-sm whitespace-nowrap mr-2 px-2 py-1 font-semibold leading-tight text-teal-700 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-700">
                         Renting : <span class="text-bold">{{ ($tenant_renting) > 0 ? ($tenant_renting) : 0 }}</span>
                     </span>
                     @if ($tenant_renting > 0)
@@ -88,7 +88,7 @@
                     @if ($tenant_pending > 0)
                     <a href="{{ url('tenants?q=pending')}}">
                     @endif
-                    <span class="px-2 py-1 font-semibold leading-tight text-amber-700 bg-amber-100 rounded-full dark:text-amber-100 dark:bg-amber-700">
+                    <span class="text-sm whitespace-nowrap px-2 py-1 font-semibold leading-tight text-amber-700 bg-amber-100 rounded-full dark:text-amber-100 dark:bg-amber-700">
                         Pending : <span class="text-bold">{{ ($tenant_pending) > 0 ? ($tenant_pending) : 0 }}</span>
                     </span>
                     @if ($tenant_pending > 0)
@@ -113,7 +113,7 @@
                     @if ($active_agents > 0)
                     <a href="{{ url('agents?q=actv')}}">
                     @endif
-                    <span class="text-sm px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                    <span class="text-sm whitespace-nowrap mr-2 px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
                         Active : <span class="text-bold">{{ ($active_agents) > 0 ? ($active_agents) : 0 }}</span>
                     </span>
                     @if ($active_agents > 0)
@@ -123,7 +123,7 @@
                     @if ($inactive_agents > 0)
                     <a href="{{ url('agents?q=inatv')}}">
                     @endif
-                    <span class="text-sm ml-2 px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
+                    <span class="text-sm whitespace-nowrap px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
                         Inactive : <span class="text-bold">{{ ($inactive_agents) > 0 ? ($inactive_agents) : 0 }}</span>
                     </span>
                     @if ($inactive_agents > 0)
@@ -132,22 +132,7 @@
                     </p>
                 </div>
             </div>
-            <!-- Card -->
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
-                    </svg>
-                </div>
-                <div>
-                    <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                        Overdue Invoices
-                    </p>
-                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        0
-                    </p>
-                </div>
-            </div>
+            
         </div>
 
 

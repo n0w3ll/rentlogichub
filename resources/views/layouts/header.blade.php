@@ -54,14 +54,6 @@
                             </li>
                             <li class="flex">
                                 <a class="w-full flex justify-between px-4 py-2 text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="#">
-                                    <span>Sales</span>
-                                    <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-600 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-600">
-                                        2
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="flex">
-                                <a class="w-full flex justify-between px-4 py-2 text-start text-sm leading-5 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-gray-200 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="#">
                                     <span>Alerts</span>
                                 </a>
                             </li>

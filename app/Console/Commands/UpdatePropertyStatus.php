@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Rent;
+use Carbon\CarbonImmutable;
 use Illuminate\Console\Command;
 
 class UpdatePropertyStatus extends Command
@@ -26,7 +27,7 @@ class UpdatePropertyStatus extends Command
      */
     public function handle()
     {
-        $today = now();
+        $today = CarbonImmutable::now();
 
         $expiredRents = Rent::where('rent_end', '<', $today)->get();
         $ongoingRents = Rent::where('rent_end', '>=', $today)->get();
@@ -51,13 +52,16 @@ class UpdatePropertyStatus extends Command
             $tenant = $ongoingRent->tenant;
 
             // Check if rent is already paid
-            if ($ongoingRent->paid === true) {
+            if ($ongoingRent->paid == true) {
                 if (($property->status == 'vacant') || ($property->status == 'pending')) {
                     $property->update(['status' => 'occupied']);
                 }
                 if ($tenant->status == 'free') {
                     $tenant->update(['status' => 'renting']);
                 }
+                $ongoingRent->update(['status' => 'ongoing']);
+            } else {
+                $ongoingRent->update(['status' => 'pending']);
             }
         }
 
