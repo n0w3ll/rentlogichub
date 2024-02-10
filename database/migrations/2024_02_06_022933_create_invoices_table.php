@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->string('number')->unique();
-            $table->foreignId('rent_id')->constrained();
+            $table->foreignId('rent_id')->constrained()->onDelete('cascade');
             $table->integer('amount');
             $table->boolean('fully_paid')->default(false);
             $table->timestamps();
