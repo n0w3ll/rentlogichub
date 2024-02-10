@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use App\Models\Property;
+use App\Models\Rent;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,8 @@ class DashboardController extends Controller
         
         $active_agents = Agent::where('status', 'actv')->count();
         $inactive_agents = Agent::where('status', 'inatv')->count();
+
+        $notifications = auth()->user()->unreadNotifications;
         
 
         return view('dashboard', compact(
@@ -31,7 +34,8 @@ class DashboardController extends Controller
             'prop_pending',
             'tenant_pending',
             'active_agents',
-            'inactive_agents'
+            'inactive_agents',
+            'notifications'
         )); 
     }
 }

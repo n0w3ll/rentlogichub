@@ -10,6 +10,7 @@ use App\Listeners\CreateInvoiceListener;
 use App\Listeners\MarkInvoiceAsFullyPaid;
 use App\Listeners\RentStatusChangedListener;
 use App\Listeners\RunUpdatePropertyStatusCommandListener;
+use App\Listeners\SendNewRentNotification;
 use App\Listeners\UpdatePropertyStatus;
 use App\Listeners\UpdateTenantStatus;
 use Illuminate\Auth\Events\Registered;
@@ -32,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
             UpdatePropertyStatus::class,
             UpdateTenantStatus::class,
             CreateInvoiceListener::class,
+            SendNewRentNotification::class,
         ],
         RunUpdatePropertyStatusCommand::class => [
             RunUpdatePropertyStatusCommandListener::class,
