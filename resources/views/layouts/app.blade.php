@@ -37,7 +37,10 @@
     <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/js/imgupload.js') }}"></script>
     <script src="{{ asset('assets/js/swal.js') }}"></script>
-    <script>Fancybox.bind("[data-fancybox]", {});</script>
+    <script src="{{ asset('assets/js/notifications.js') }}"></script>
+    <script>
+        Fancybox.bind("[data-fancybox]", {});
+    </script>
 </body>
 
 </html>

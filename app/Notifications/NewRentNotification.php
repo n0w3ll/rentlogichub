@@ -53,8 +53,8 @@ class NewRentNotification extends Notification
             'tenant' => $this->rent->tenant->name,
             'property_type' => $this->rent->property->type,
             'property_no' => $this->rent->property->number,
-            'rent_start' => $this->rent->formatted_rent_start_date,
-            'rent_end' => $this->rent->formatted_rent_end_date
+            'rent_start' => $this->rent->rent_start,
+            'rent_end' => $this->rent->rent_end
         ];
     }
 }

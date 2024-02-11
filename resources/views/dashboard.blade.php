@@ -140,26 +140,29 @@
             <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                 Messages
             </h2>
-            <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                
-                @forelse($notifications as $notification)
-                <div class="alert alert-success" role="alert">
-                    [{{ $notification->created_at->format('d-m-Y') }}] A new tenant {{ $notification->data['tenant'] }} has registered for rent at {{ $notification->data['property_type'] }} No.{{ $notification->data['property_no'] }} from {{ $notification->data['rent_start'] }} to {{ $notification->data['rent_end'] }}.
-                    <a href="#" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+
+            <div class="noti-container">
+            @forelse($notifications as $notification)
+                <div class="alert mb-2 bg-blue-100 border-l-4 border-blue-500 text-gray-700 p-4 flex justify-between w-full" role="alert">
+                    <div class="text-sm">
+                        <span class="text-gray-600">{{ $notification->created_at->format('d-m-Y') }}</span> : <span class="font-semibold">{{ $notification->data['tenant'] }}</span> has registered for rent at <span class="font-bold uppercase">{{ $notification->data['property_type'] }} No.{{ $notification->data['property_no'] }}</span> from {{ \Carbon\Carbon::parse($notification->data['rent_start'])->format('d-m-Y') }} to {{ \Carbon\Carbon::parse($notification->data['rent_end'])->format('d-m-Y') }}.
+                    </div>
+                    <a href="#" class="text-xs font-semibold text-sky-500 mark-as-read" data-id="{{ $notification->id }}">
                         Mark as read
                     </a>
                 </div>
-
+            
                 @if($loop->last)
-                <a href="#" id="mark-all">
-                    Mark all as read
+                <a class="text-right mt-4" href="#" id="mark-all">
+                    <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Mark All As Read</button>
                 </a>
-                @endif
-                @empty
-                There are no new notifications
-                @endforelse
-                
+            @endif
+           
+            @empty
+                <span class="text-sm text-gray-400 dark:text-gray-500">There are no new notifications</span>
+            @endforelse
             </div>
+
         </div>
 
 

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $prop_occupied = Property::where('status', 'occupied')->count();
         $prop_vacant = Property::where('status', 'vacant')->count();
@@ -19,12 +19,12 @@ class DashboardController extends Controller
         $tenant_free = Tenant::where('status', 'free')->count();
         $tenant_renting = Tenant::where('status', 'renting')->count();
         $tenant_pending = Tenant::where('status', 'pending')->count();
-        
+
         $active_agents = Agent::where('status', 'actv')->count();
         $inactive_agents = Agent::where('status', 'inatv')->count();
 
         $notifications = auth()->user()->unreadNotifications;
-        
+
 
         return view('dashboard', compact(
             'prop_occupied',
@@ -36,6 +36,18 @@ class DashboardController extends Controller
             'active_agents',
             'inactive_agents',
             'notifications'
-        )); 
+        ));
+    }
+
+    public function markNotification(Request $request)
+    {
+        auth()->user()
+            ->unreadNotifications
+            ->when($request->input('id'), function ($query) use ($request) {
+                return $query->where('id', $request->input('id'));
+            })
+            ->markAsRead();
+
+        return response()->noContent();
     }
 }
