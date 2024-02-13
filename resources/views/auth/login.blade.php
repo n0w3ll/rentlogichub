@@ -51,13 +51,13 @@
               >
                 Login
               </h1>
-              <label for="username" class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">{{__('Username')}}</span>
-                <input id="username" 
+              <label for="email" class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">{{__('E-Mail')}}</span>
+                <input id="email" 
                   class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                  name="username" value="{{old('username')}}" required autofocus autocomplete="username"
+                  name="email" value="{{old('email')}}" required autofocus autocomplete="email"
                 />
-                <x-input-error :messages="$errors->get('username')" class="mt-2" />
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
               </label>
               <label for="password"  class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">{{__('Password')}}</span>

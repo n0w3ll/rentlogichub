@@ -34,6 +34,10 @@ class InvoiceController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
+        if ($searched !== '') {
+            $invoices->appends(['q' => $searched]);
+        }
+
         return view('invoices.index', compact('invoices', 'searched'));
     }
 

@@ -46,6 +46,10 @@ class RentController extends Controller
         $text = "This will also delete related invoices and transactions.";
         confirmDelete($title, $text);
 
+        if ($searched !== '') {
+            $rents->appends(['q' => $searched]);
+        }
+
         return view('rents.index', compact('rents', 'searched'));
     }
 

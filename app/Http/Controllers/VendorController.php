@@ -32,6 +32,10 @@ class VendorController extends Controller
         $title = 'Delete Vendor?';
         $text = "Deleting this vendor will also delete its agents";
         confirmDelete($title, $text);
+
+        if ($searched !== '') {
+            $vendors->appends(['q' => $searched]);
+        }
         
         return view('vendors.index', compact('vendors','searched'));
     }

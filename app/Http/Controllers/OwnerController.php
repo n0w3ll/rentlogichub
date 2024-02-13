@@ -36,6 +36,10 @@ class OwnerController extends Controller
         $text = "Deleting this owner will also delete ALL his/her properties";
         confirmDelete($title, $text);
         
+        if ($searched !== '') {
+            $owners->appends(['q' => $searched]);
+        }
+
         return view('owners.index', compact('owners','searched'));
         
     }

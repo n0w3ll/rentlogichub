@@ -37,6 +37,10 @@ class AgentController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
+        if ($searched !== '') {
+            $agents->appends(['q' => $searched]);
+        }
+
         return view('agents.index', compact('agents', 'searched'));
     }
 

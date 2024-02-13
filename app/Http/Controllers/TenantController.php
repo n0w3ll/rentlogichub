@@ -34,6 +34,10 @@ class TenantController extends Controller
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
 
+        if ($searched !== '') {
+            $tenants->appends(['q' => $searched]);
+        }
+
         return view('tenants.index', compact('tenants','searched'));
     }
 
