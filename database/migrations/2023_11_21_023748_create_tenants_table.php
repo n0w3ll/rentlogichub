@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('identity_no');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->string('agreement')->nullable();
             $table->string('status')->default('free');
             $table->timestamps();

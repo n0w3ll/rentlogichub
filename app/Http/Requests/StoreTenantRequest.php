@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Tenant;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules;
 
 class StoreTenantRequest extends FormRequest
 {
@@ -22,11 +24,12 @@ class StoreTenantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'identity_no' => 'required|string',
-            'phone' => 'required|string',
-            'email' => 'required|email',
-            'status' => 'required|string'
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Tenant::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'identity_no' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
+            'status' => ['required', 'string', 'max:255'],
         ];
     }
 }

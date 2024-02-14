@@ -13,18 +13,28 @@
                         <input type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="name">
                     </label>
                     <label class="block text-sm mt-4 w-full md:w-1/2 ">
-                        <span class="text-gray-700 dark:text-gray-400 font-medium">Identity / Passport No.</span>
-                        <input type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="identity_no">
+                        <span class="text-gray-700 dark:text-gray-400 font-medium">E-Mail</span>
+                        <input type="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" required name="email">
+                    </label>
+                </div>
+                <div class="block md:flex md:space-x-4">
+                    <label class="block text-sm mt-4 w-full md:w-1/2">
+                        <span class="text-gray-700 dark:text-gray-400 font-medium">Password</span>
+                        <input type="password" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" required name="password">
+                    </label>
+                    <label class="block text-sm mt-4 w-full md:w-1/2 ">
+                        <span class="text-gray-700 dark:text-gray-400 font-medium">Confirm Password</span>
+                        <input type="password" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="password_confirmation" required autocomplete="new-password">
                     </label>
                 </div>
                 <div class="block md:flex md:space-x-4">
                     <label class="block text-sm mt-4 w-full md:w-1/2 ">
-                        <span class="text-gray-700 dark:text-gray-400 font-medium">Phone No.</span>
-                        <input type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="phone">
+                        <span class="text-gray-700 dark:text-gray-400 font-medium">Identity / Passport No.</span>
+                        <input type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="identity_no">
                     </label>
                     <label class="block text-sm mt-4 w-full md:w-1/2 ">
-                        <span class="text-gray-700 dark:text-gray-400 font-medium">E-Mail</span>
-                        <input type="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="email">
+                        <span class="text-gray-700 dark:text-gray-400 font-medium">Phone No.</span>
+                        <input type="text" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" name="phone">
                     </label>
                 </div>
 
